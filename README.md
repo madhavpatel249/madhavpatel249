@@ -25,7 +25,7 @@ I'm a developer driven by the challenge of building intelligent, user-centric ap
 
 ### 🚀 What I'm Working On
 
-My current focus is on a project that leverages neural networks to [e.g., predict stock trends, classify text sentiment, identify objects in images]. I'm building this to deepen my understanding of AI and its practical applications in data analysis.
+- My current focus is on a project that leverages neural networks to [e.g., predict stock trends, classify text sentiment, identify objects in images]. I'm building this to deepen my understanding of AI and its practical applications in data analysis.
 
 ---
 
