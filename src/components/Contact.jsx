@@ -16,9 +16,8 @@ const cardStyles = `
     padding: 0;
   }
   .contact-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 40px;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
   }
   .contact-content {
@@ -156,17 +155,6 @@ function Contact() {
                 <span>madhavpatel249</span>
               </a>
             </div>
-          </div>
-          <div className="puffles-column-contact">
-            <img 
-              src="/madhavpatel249/images/twopuffles.gif" 
-              alt="Two Puffles" 
-              className="puffles-gif-contact"
-              onError={(e) => {
-                console.error('Two puffles GIF not found');
-                e.target.style.display = 'none';
-              }}
-            />
           </div>
         </div>
       </section>
