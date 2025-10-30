@@ -2,92 +2,41 @@ import React, { useState, useEffect } from 'react'
 
 const heroStyles = `
   .hero-section {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-top: 120px;
-    margin-bottom: 50px;
+    padding: 20px 0; /* tighter top/bottom */
   }
   .hero-text-container {
-    position: absolute;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    z-index: 5;
-  }
-  .hero-text {
-    font-family: 'Fredoka One', cursive;
-    font-size: 3.5rem;
-    color: white;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
-  }
-  .hello-text {
-    clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    animation: reveal-hello 3s ease-in-out forwards;
-    padding-right: 5px;
-  }
-  @keyframes reveal-hello {
-    0%, 13% {
-      clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    }
-    14% {
-      clip-path: polygon(0 0, 0 100%, 10% 100%, 10% 0%);
-    }
-    19% {
-      clip-path: polygon(0 0, 0 100%, 30% 100%, 30% 0%);
-    }
-    24% {
-      clip-path: polygon(0 0, 0 100%, 55% 100%, 55% 0%);
-    }
-    27% {
-      clip-path: polygon(0 0, 0 100%, 80% 100%, 80% 0%);
-    }
-    30% {
-      clip-path: polygon(0 0, 0 100%, 105% 100%, 105% 0%);
-    }
-    31%, 100% {
-      clip-path: polygon(0 0, 0 100%, 105% 100%, 105% 0%);
-    }
+    flex-direction: column;
+    gap: 6px; /* place subtitle right under the name */
   }
   .name-text {
-    clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    animation: reveal-name 2s ease-in-out forwards;
-    padding-right: 5px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 0;
   }
-  @keyframes reveal-name {
-    0%, 70% {
-      clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    }
-    71% {
-      clip-path: polygon(0 0, 0 100%, 10% 100%, 10% 0%);
-    }
-    75% {
-      clip-path: polygon(0 0, 0 100%, 30% 100%, 30% 0%);
-    }
-    80% {
-      clip-path: polygon(0 0, 0 100%, 55% 100%, 55% 0%);
-    }
-    85% {
-      clip-path: polygon(0 0, 0 100%, 80% 100%, 80% 0%);
-    }
-    90% {
-      clip-path: polygon(0 0, 0 100%, 105% 100%, 105% 0%);
-    }
-    100% {
-      clip-path: polygon(0 0, 0 100%, 105% 100%, 105% 0%);
-    }
+  .hero-subtitle {
+    font-size: 18px;
+    color: #666666;
+    font-weight: 500;
   }
-  @media (max-width: 768px) {
-    .hero-section {
-      height: 300px;
-    }
-    .hero-text {
-      font-size: 2.5rem;
-    }
+  .hero-description {
+    font-size: 16px;
+    color: #666666;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-top: 14px;
+  }
+  .hero-description a {
+    color: inherit; /* remove default blue */
+    text-decoration: none;
+    border-bottom: 1px dashed transparent;
+    transition: color 0.2s ease, border-bottom-color 0.2s ease;
+    cursor: pointer;
+  }
+  .hero-description a:hover {
+    color: #2196f3; /* blue hover */
+    border-bottom-color: #2196f3;
   }
 `
 
@@ -97,8 +46,17 @@ function Hero() {
       <style>{heroStyles}</style>
       <section className="hero-section">
         <div className="hero-text-container">
-          <span className="hero-text hello-text">Hi there,</span>
-          <span className="hero-text name-text">I'm Madhav Patel</span>
+          <div className="name-text">Madhav Patel</div>
+          <div className="hero-subtitle">
+            Software Engineering @ Ontario Tech
+          </div>
+          <div className="hero-description">
+            A full‑stack developer studying Software Engineering at Ontario Tech, driven to leverage
+            technology to build meaningful, impactful solutions. In my free time, I enjoy lifting weights
+            and cooking with new recipes. Please feel free to contact me at
+            <span> </span><a href="mailto:madhavpatel249@gmail.com">madhavpatel249@gmail.com</a><span> </span>
+            about any questions or opportunities.
+          </div>
         </div>
       </section>
     </>

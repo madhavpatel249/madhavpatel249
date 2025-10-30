@@ -1,12 +1,44 @@
-Hello, I'm Madhav Patel👋
-I'm a developer driven by the challenge of building intelligent, user-centric applications. My focus is on the intersection of AI and full-stack development, where I leverage my skills to create robust and scalable solutions. I'm always seeking to learn and apply new technologies to solve real-world problems and am actively looking for new opportunities in software engineering.
+# Madhav Patel
 
-💻 Technologies & Tools
-Python JavaScript TypeScript React Node.js Express.js MongoDB Git
+<div align="center">
 
-🚀 What I'm Working On
-My current focus is on a project that leverages neural networks to [e.g., predict stock trends, classify text sentiment, identify objects in images]. I'm building this to deepen my understanding of AI and its practical applications in data analysis.
-📚 What I'm Learning
-.NET Fundamentals: Concepts, APIs and Libraries in the .NET to expand my full-stack and web development expertise
-📫 Let's Connect
-I'm always interested in networking and discussing new ideas. Feel free to connect with me!
+**Full-Stack Developer & AI Enthusiast**
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-1e3a8a?style=for-the-badge&logo=vercel&logoColor=white)](https://madhavpatel249.vercel.app)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-1e40af?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/madhavpatel249)
+[![GitHub](https://img.shields.io/badge/GitHub-1e293b?style=for-the-badge&logo=github&logoColor=white)](https://github.com/madhavpatel249)
+
+</div>
+
+---
+
+## About
+
+I'm a developer focused on building intelligent, user-centric applications at the intersection of AI and full-stack development. I create robust, scalable solutions while continuously learning and applying new technologies to solve real-world problems.
+
+## Tech Stack
+
+![Python](https://img.shields.io/badge/-Python-1e40af?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-1e40af?style=flat-square&logo=javascript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/-TypeScript-1e40af?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/-React-1e40af?style=flat-square&logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-1e40af?style=flat-square&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/-Express-1e40af?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/-MongoDB-1e40af?style=flat-square&logo=mongodb&logoColor=white)
+![Git](https://img.shields.io/badge/-Git-1e40af?style=flat-square&logo=git&logoColor=white)
+
+## Current Focus
+
+Building neural network projects to deepen my understanding of AI and its practical applications in data analysis.
+
+## Learning
+
+Currently expanding my expertise in .NET fundamentals, APIs, and full-stack web development.
+
+---
+
+<div align="center">
+
+**Let's connect and discuss new ideas!**
+
+</div>
