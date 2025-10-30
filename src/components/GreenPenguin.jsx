@@ -63,7 +63,8 @@ function GreenPenguin() {
     <>
       <style>{penguinStyles}</style>
       <div className="green-penguin-container" onClick={scrollToTop}>
-        <img 
+        {/* Temporarily disabled due to large file size (15MB) */}
+        {/* <img 
           ref={imgRef}
           src="/images/greenpenguin.gif" 
           alt="Green Penguin" 
@@ -72,7 +73,7 @@ function GreenPenguin() {
             console.error('Green penguin GIF not found');
             e.target.style.display = 'none';
           }}
-        />
+        /> */}
       </div>
     </>
   )
