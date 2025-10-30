@@ -62,18 +62,36 @@ const cardStyles = `
 function Projects() {
   const projects = [
     {
-      title: 'ATS Screening Tool',
-      description: 'AI-powered Resume Analyzer leveraging OpenAI to score resume-job description alignment with 85%+ accuracy and provide actionable improvement suggestions.',
+      title: 'AI Resume Analyzer',
+      description: (
+        <>
+          Engineered a production‑grade <strong>AI Resume Analyzer</strong> achieving
+          <strong> 85%+ accuracy</strong> in job alignment, underpinned by a robust data parsing pipeline with a
+          <strong> 90% success rate</strong> for multi‑format resumes.
+        </>
+      ),
       technologies: ['React', 'Python', 'FastAPI', 'OpenAI API', 'TailwindCSS', 'Git']
     },
     {
-      title: 'Evently - Full Stack Development',
-      description: 'Full-stack MERN event platform with dynamic event discovery, user authentication, and complete ticketing system supporting 50+ sample events.',
+      title: 'Ticket Sale Platform',
+      description: (
+        <>
+          Architected and deployed a highly scalable MERN‑stack Event Platform supporting <strong>50+ user events</strong>,
+           strategically refactoring its <strong>10+ RESTful APIs</strong> into a professional controller‑based pattern to 
+           maximize backend maintainability.
+        </>
+      ),
       technologies: ['React', 'JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'TailwindCSS', 'Git']
     },
     {
-      title: 'Car Trading Full Stack Website',
-      description: 'Pre-owned car marketplace with user authentication, dynamic listings for 50+ vehicles, seller review system, and advanced filtering options.',
+      title: 'Car Trading Marketplace',
+      description: (
+        <>
+          Designed a full‑stack marketplace featuring dynamic listings and a 
+          seller review system, centered on an optimized <strong>5‑entity relational MySQL database</strong> 
+          and performance‑driven client‑side filtering solutions.
+        </>
+      ),
       technologies: ['React', 'Node.js', 'Express.js', 'MySQL']
     }
   ]
