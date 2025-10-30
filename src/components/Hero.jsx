@@ -125,7 +125,7 @@ function Hero() {
       <style>{heroStyles}</style>
       <section className="hero-section">
         <img 
-          src="/images/doctorpenguin.gif" 
+          src="/madhavpatel249/images/doctorpenguin.gif" 
           alt="Doctor Penguin" 
           className="doctor-penguin"
           onError={(e) => {

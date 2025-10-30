@@ -159,7 +159,7 @@ function Contact() {
           </div>
           <div className="puffles-column-contact">
             <img 
-              src="/images/twopuffles.gif" 
+              src="/madhavpatel249/images/twopuffles.gif" 
               alt="Two Puffles" 
               className="puffles-gif-contact"
               onError={(e) => {

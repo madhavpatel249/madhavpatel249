@@ -29,7 +29,7 @@ function BlackPuffle() {
       <style>{puffleStyles}</style>
       <div className="black-puffle-container">
         <img 
-          src="/images/blackpuffle.gif" 
+          src="/madhavpatel249/images/blackpuffle.gif" 
           alt="Black Puffle" 
           className="black-puffle"
           onError={(e) => {

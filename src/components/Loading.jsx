@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 const loadingGifs = [
-  '/images/loading/pizzaflip.gif',
-  '/images/loading/shovellingpenguin.gif',
-  '/images/loading/cartsurferpenguin.gif',
-  '/images/loading/twopenguins.gif'
+  '/madhavpatel249/images/loading/pizzaflip.gif',
+  '/madhavpatel249/images/loading/shovellingpenguin.gif',
+  '/madhavpatel249/images/loading/cartsurferpenguin.gif',
+  '/madhavpatel249/images/loading/twopenguins.gif'
 ]
 
 const loadingStyles = `

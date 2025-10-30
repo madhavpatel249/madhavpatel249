@@ -177,7 +177,7 @@ function Technologies() {
         <div className="skills-container">
           <div className="puffles-column">
             <img 
-              src="/images/loading/cartsurferpenguin.gif" 
+              src="/madhavpatel249/images/loading/cartsurferpenguin.gif" 
               alt="Cart Surfer Penguin" 
               className="puffles-gif"
               onError={(e) => {
