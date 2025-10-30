@@ -16,9 +16,8 @@ const cardStyles = `
     padding: 0;
   }
   .skills-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 40px;
+    display: flex;
+    justify-content: flex-start;
     align-items: start;
   }
   .puffles-column {
@@ -175,18 +174,6 @@ function Technologies() {
       <style>{cardStyles}</style>
       <section className="card igloo-card">
         <div className="skills-container">
-          <div className="puffles-column">
-            <img 
-              src="/madhavpatel249/images/loading/cartsurferpenguin.gif" 
-              alt="Cart Surfer Penguin" 
-              className="puffles-gif"
-              onError={(e) => {
-                console.error('Cart surfer penguin GIF not found');
-                e.target.style.display = 'none';
-              }}
-            />
-          </div>
-          
           <div className="skills-column">
             <h2>Skills</h2>
             <div className="skills-category">

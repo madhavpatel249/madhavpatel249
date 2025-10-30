@@ -18,7 +18,7 @@ const heroStyles = `
     height: 200px;
     width: auto;
     z-index: 10;
-    animation: walk-across 6s ease-in-out forwards;
+    animation: walk-across 3s ease-in-out forwards;
   }
   @keyframes walk-across {
     0% {
@@ -52,7 +52,7 @@ const heroStyles = `
   }
   .hello-text {
     clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    animation: reveal-hello 6s ease-in-out forwards;
+    animation: reveal-hello 3s ease-in-out forwards;
     padding-right: 5px;
   }
   @keyframes reveal-hello {
