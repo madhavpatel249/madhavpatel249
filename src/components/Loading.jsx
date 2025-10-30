@@ -147,17 +147,17 @@ function Loading({ onComplete }) {
 
         // Determine increment based on current progress
         // 0-20 and 20-50: 0.8x speed (1.6 increment per 50ms)
-        // 1.4 second loading for recruiters - visible but quick
-        let increment = 6 // Speed for 50-100 (1.4s total)
+        // 2 second loading for recruiters - visible but quick
+        let increment = 4.5 // Speed for 50-100 (2s total)
         if (prev < 50) {
-          increment = 4.8 // Speed for 0-50
+          increment = 3.6 // Speed for 0-50
         }
 
         return prev + increment
       })
     }
 
-    intervalRef.current = setInterval(updateProgress, 8)
+    intervalRef.current = setInterval(updateProgress, 10)
 
     return () => {
       if (intervalRef.current) {

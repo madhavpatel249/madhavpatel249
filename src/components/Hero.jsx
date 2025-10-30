@@ -80,7 +80,7 @@ const heroStyles = `
   }
   .name-text {
     clip-path: polygon(0 0, 0 100%, 0% 100%, 0% 0%);
-    animation: reveal-name 3s ease-in-out forwards;
+    animation: reveal-name 2s ease-in-out forwards;
     padding-right: 5px;
   }
   @keyframes reveal-name {
