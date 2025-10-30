@@ -12,31 +12,6 @@ const heroStyles = `
     margin-top: 120px;
     margin-bottom: 50px;
   }
-  .doctor-penguin {
-    position: absolute;
-    left: -150px;
-    height: 200px;
-    width: auto;
-    z-index: 10;
-    animation: walk-across 3s ease-in-out forwards;
-  }
-  @keyframes walk-across {
-    0% {
-      left: -150px;
-    }
-    30% {
-      left: 35%;
-    }
-    70% {
-      left: 35%;
-    }
-    85% {
-      left: 65%;
-    }
-    100% {
-      left: 100%;
-    }
-  }
   .hero-text-container {
     position: absolute;
     display: flex;
@@ -110,9 +85,6 @@ const heroStyles = `
     .hero-section {
       height: 300px;
     }
-    .doctor-penguin {
-      height: 150px;
-    }
     .hero-text {
       font-size: 2.5rem;
     }
@@ -124,15 +96,6 @@ function Hero() {
     <>
       <style>{heroStyles}</style>
       <section className="hero-section">
-        <img 
-          src="/madhavpatel249/images/doctorpenguin.gif" 
-          alt="Doctor Penguin" 
-          className="doctor-penguin"
-          onError={(e) => {
-            console.error('Doctor penguin GIF not found');
-            e.target.style.display = 'none';
-          }}
-        />
         <div className="hero-text-container">
           <span className="hero-text hello-text">Hi there,</span>
           <span className="hero-text name-text">I'm Madhav Patel</span>
