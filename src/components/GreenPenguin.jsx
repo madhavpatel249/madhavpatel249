@@ -34,30 +34,7 @@ function GreenPenguin() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  useEffect(() => {
-    const img = imgRef.current
-    if (!img) return
-
-    // Force reload the GIF periodically to keep it looping
-    // Use a longer interval to let the full animation cycle play
-    const reloadGif = () => {
-      if (img && img.src) {
-        const src = img.src
-        // Remove any existing query parameters and add a timestamp to force reload
-        const baseSrc = src.split('?')[0]
-        img.src = `${baseSrc}?t=${Date.now()}`
-      }
-    }
-
-    // Reload every 5 seconds to restart animation
-    const interval = setInterval(reloadGif, 5000)
-
-    return () => {
-      if (interval) {
-        clearInterval(interval)
-      }
-    }
-  }, [])
+  // No need to reload PNG - it's a static image
 
   return (
     <>
@@ -65,11 +42,11 @@ function GreenPenguin() {
       <div className="green-penguin-container" onClick={scrollToTop}>
         <img 
           ref={imgRef}
-          src="/images/greenpenguin.gif" 
+          src="/images/greenpenguin.PNG" 
           alt="Green Penguin" 
           className="green-penguin"
           onError={(e) => {
-            console.error('Green penguin GIF not found');
+            console.error('Green penguin image not found');
             e.target.style.display = 'none';
           }}
         />

@@ -28,6 +28,8 @@ const cardStyles = `
     margin-top: 15px;
     justify-content: center;
     overflow: visible; /* allow tooltips to overflow rows */
+    position: relative; /* create positioning context */
+    isolation: isolate; /* create stacking context for the container */
   }
   .badge {
     background-color: #f8f9fa;
@@ -37,16 +39,18 @@ const cardStyles = `
     text-align: center;
     position: relative;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     overflow: visible; /* ensure tooltip not clipped */
     z-index: 0;
+    transform: translate3d(0, 0, 0); /* force GPU acceleration and create stacking context */
+    will-change: transform, z-index; /* hint browser about upcoming changes */
   }
   .badge:hover {
     background-color: #e8f5e8;
     border-color: #4caf50;
-    transform: translateY(-2px);
+    transform: translate3d(0, -2px, 0); /* maintain stacking context with 3D transform */
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
-    z-index: 2; /* lift above adjacent rows */
+    z-index: 100; /* much higher z-index applied immediately */
   }
   .badge-icon {
     width: 32px;
@@ -64,7 +68,7 @@ const cardStyles = `
     position: absolute;
     bottom: -35px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(0); /* force GPU acceleration */
     background-color: #000000;
     color: #ffffff;
     padding: 6px 12px;
@@ -72,12 +76,15 @@ const cardStyles = `
     font-size: 12px;
     white-space: nowrap;
     opacity: 0;
+    visibility: hidden; /* completely hide until hover to prevent glitch */
     pointer-events: none;
-    transition: opacity 0.2s ease;
-    z-index: 100;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s; /* keep hidden until ready */
+    z-index: 1; /* relative to parent badge's stacking context */
   }
   .badge:hover .badge-tooltip {
     opacity: 1;
+    visibility: visible; /* show immediately on hover */
+    transition: opacity 0.2s ease, visibility 0s linear 0s; /* no delay on show */
   }
   .badge-tooltip::before {
     content: '';
