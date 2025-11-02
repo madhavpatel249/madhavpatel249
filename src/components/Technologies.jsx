@@ -42,10 +42,10 @@ const cardStyles = `
     z-index: 0;
   }
   .badge:hover {
-    background-color: #e3f2fd;
-    border-color: #2196f3;
+    background-color: #e8f5e8;
+    border-color: #4caf50;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
     z-index: 2; /* lift above adjacent rows */
   }
   .badge-icon {
@@ -53,6 +53,12 @@ const cardStyles = `
     height: 32px;
     object-fit: contain;
     filter: brightness(0);
+  }
+  .badge-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000000;
   }
   .badge-tooltip {
     position: absolute;
@@ -86,24 +92,26 @@ const cardStyles = `
 `
 
 function Technologies() {
-  const languages = [
+  // Ordered with Python first, then strongest technologies
+  const technologies = [
     { name: 'Python', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/python.svg' },
+    // Frontend (strongest first)
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/react.svg' },
     { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/javascript.svg' },
     { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/typescript.svg' },
-    { name: 'Java', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/openjdk.svg' },
-    { name: 'C#', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/csharp.svg' },
-    { name: 'SQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg' },
-    { name: 'Linux', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linux.svg' }
-  ]
-
-  const technologies = [
-    { name: 'React', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/react.svg' },
+    // Backend
     { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/nodedotjs.svg' },
     { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/express.svg' },
-    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongodb.svg' },
+    // Databases (strongest first)
+    { name: 'SQL', textOnly: true },
     { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/postgresql.svg' },
     { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mysql.svg' },
-    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg' }
+    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/mongodb.svg' },
+    // Other languages/tools
+    { name: 'Java', icon: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg' },
+    { name: 'C#', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/csharp.svg' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/git.svg' },
+    { name: 'Linux', icon: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linux.svg' }
   ]
 
   return (
@@ -114,9 +122,13 @@ function Technologies() {
         <div className="skills-container">
           <div className="skills-category">
             <div className="tech-badges">
-              {[...languages, ...technologies].map((item, index) => (
+              {technologies.map((item, index) => (
                 <div key={index} className="badge">
-                  <img src={item.icon} alt={item.name} className="badge-icon" />
+                  {item.textOnly ? (
+                    <span className="badge-text">{item.name}</span>
+                  ) : (
+                    <img src={item.icon} alt={item.name} className="badge-icon" />
+                  )}
                   <span className="badge-tooltip">{item.name}</span>
                 </div>
               ))}

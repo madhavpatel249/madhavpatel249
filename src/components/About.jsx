@@ -42,20 +42,25 @@ const cardStyles = `
 `
 
 function About() {
+  // Organized by logical grouping (no subheadings, just ordered)
   const coursework = [
-    'OOP',
+    // Core Foundations
     'Data Structures',
-    'Web Programming',
-    'Requirements Engineering',
-    'Systems Programming',
-    'Software Design & Architecture',
-    'Databases',
     'Algorithms',
-    'Software Quality & PM',
-    'Intro to AI',
-    'Computer Networks',
+    'OOP',
     'Operating Systems',
-    'Computer Architecture'
+    'Computer Architecture',
+    // Software Engineering & Design
+    'Software Design & Architecture',
+    'Requirements Engineering',
+    'Software Quality & PM',
+    // Databases
+    'Databases',
+    // Applications & Specializations
+    'Web Programming',
+    'Systems Programming',
+    'Computer Networks',
+    'Intro to AI'
   ]
 
   return (
