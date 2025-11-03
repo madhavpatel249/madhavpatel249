@@ -78,13 +78,13 @@ const cardStyles = `
     opacity: 0;
     visibility: hidden; /* completely hide until hover to prevent glitch */
     pointer-events: none;
-    transition: opacity 0.2s ease, visibility 0s linear 0.2s; /* keep hidden until ready */
+    transition: opacity 0.15s ease 0s, visibility 0s linear 0s; /* hide visibility immediately when hover ends */
     z-index: 1; /* relative to parent badge's stacking context */
   }
   .badge:hover .badge-tooltip {
     opacity: 1;
     visibility: visible; /* show immediately on hover */
-    transition: opacity 0.2s ease, visibility 0s linear 0s; /* no delay on show */
+    transition: opacity 0.15s ease 0s, visibility 0s linear 0s; /* no delay on show */
   }
   .badge-tooltip::before {
     content: '';

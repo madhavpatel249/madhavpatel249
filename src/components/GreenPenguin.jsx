@@ -42,7 +42,7 @@ function GreenPenguin() {
       <div className="green-penguin-container" onClick={scrollToTop}>
         <img 
           ref={imgRef}
-          src="/images/greenpenguin.PNG" 
+          src="/images/greenpenguin.png" 
           alt="Green Penguin" 
           className="green-penguin"
           onError={(e) => {
