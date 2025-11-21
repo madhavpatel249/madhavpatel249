@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react'
 // Use Vite's base URL for proper path resolution in deployment
 const getImagePath = () => {
   const base = import.meta.env.BASE_URL || '/'
-  return `${base}images/greenpenguin.png`.replace(/\/\//g, '/')
+  return `${base}images/pngwing.com.png`.replace(/\/\//g, '/')
 }
 
 const penguinStyles = `
@@ -19,7 +19,7 @@ const penguinStyles = `
     transform: scale(1.1);
   }
   .green-penguin {
-    height: 160px;
+    height: 176px;
     width: auto;
   }
   @media (max-width: 768px) {
@@ -28,7 +28,7 @@ const penguinStyles = `
       right: 16px;
     }
     .green-penguin {
-      height: 120px;
+      height: 132px;
     }
   }
 `
@@ -47,10 +47,10 @@ function GreenPenguin() {
       // Try alternative paths
       const base = import.meta.env.BASE_URL || '/'
       const paths = [
-        '/images/greenpenguin.png',
-        `${base}images/greenpenguin.png`.replace(/\/\//g, '/'),
-        './images/greenpenguin.png',
-        'images/greenpenguin.png'
+        '/images/pngwing.com.png',
+        `${base}images/pngwing.com.png`.replace(/\/\//g, '/'),
+        './images/pngwing.com.png',
+        'images/pngwing.com.png'
       ]
       // Try each path
       let pathIndex = 0
@@ -88,7 +88,7 @@ function GreenPenguin() {
             onError={(e) => {
               console.error('Green penguin image not found at:', e.target.src);
               // Final fallback - try absolute URL
-              const absolutePath = `${window.location.origin}/images/greenpenguin.png`
+              const absolutePath = `${window.location.origin}/images/pngwing.com.png`
               if (e.target.src !== absolutePath) {
                 e.target.src = absolutePath
               } else {
