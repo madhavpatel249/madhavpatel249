@@ -2,89 +2,112 @@ import React from 'react'
 
 const cardStyles = `
   .skills-section {
-    padding: 12px 0; /* reduce vertical padding */
+    padding: 0;
   }
   .skills-section h2 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    color: #000000;
-    font-size: 24px;
+    color: #1a1a1a;
+    font-size: 28px;
     font-weight: 700;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+  }
+  .dark .skills-section h2 {
+    color: #e0e0e0;
   }
   .skills-category {
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
   .skills-category h3 {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    color: #000000;
+    color: #1a1a1a;
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+  }
+  .dark .skills-category h3 {
+    color: #e0e0e0;
   }
   .tech-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 15px;
-    justify-content: center;
-    overflow: visible; /* allow tooltips to overflow rows */
-    position: relative; /* create positioning context */
-    isolation: isolate; /* create stacking context for the container */
+    gap: 12px;
+    margin-top: 0;
+    justify-content: flex-start;
+    overflow: visible;
+    position: relative;
+    isolation: isolate;
   }
   .badge {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
     padding: 12px;
     border-radius: 8px;
     text-align: center;
     position: relative;
     cursor: pointer;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: visible; /* ensure tooltip not clipped */
+    transition: all 0.2s ease;
+    overflow: visible;
     z-index: 0;
-    transform: translate3d(0, 0, 0); /* force GPU acceleration and create stacking context */
-    will-change: transform, z-index; /* hint browser about upcoming changes */
+    transform: translate3d(0, 0, 0);
+    will-change: transform, z-index;
+  }
+  .dark .badge {
+    background-color: #2a2a2a;
+    border-color: #404040;
   }
   .badge:hover {
-    background-color: #e8f5e8;
-    border-color: #4caf50;
-    transform: translate3d(0, -2px, 0); /* maintain stacking context with 3D transform */
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
-    z-index: 100; /* much higher z-index applied immediately */
+    border-color: #0066cc;
+    transform: translate3d(0, -4px, 0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
   }
   .badge-icon {
     width: 32px;
     height: 32px;
     object-fit: contain;
     filter: brightness(0);
+    transition: transform 0.2s ease;
+  }
+  .badge:hover .badge-icon {
+    transform: scale(1.05);
   }
   .badge-text {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     font-size: 14px;
-    font-weight: 600;
-    color: #000000;
+    font-weight: 500;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+  }
+  .dark .badge-text {
+    color: #e0e0e0;
+  }
+  .dark .badge-icon {
+    filter: brightness(0) invert(1);
   }
   .badge-tooltip {
     position: absolute;
     bottom: -35px;
     left: 50%;
-    transform: translateX(-50%) translateZ(0); /* force GPU acceleration */
-    background-color: #000000;
-    color: #ffffff;
+    transform: translateX(-50%) translateZ(0);
+    background-color: #2a2a2a;
+    color: #e0e0e0;
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 6px;
     font-size: 12px;
+    font-weight: 500;
     white-space: nowrap;
     opacity: 0;
-    visibility: hidden; /* completely hide until hover to prevent glitch */
+    visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.15s ease 0s, visibility 0s linear 0s; /* hide visibility immediately when hover ends */
-    z-index: 1; /* relative to parent badge's stacking context */
+    transition: opacity 0.15s ease 0s, visibility 0s linear 0s;
+    z-index: 1;
   }
   .badge:hover .badge-tooltip {
     opacity: 1;
-    visibility: visible; /* show immediately on hover */
-    transition: opacity 0.15s ease 0s, visibility 0s linear 0s; /* no delay on show */
+    visibility: visible;
+    transition: opacity 0.15s ease 0s, visibility 0s linear 0s;
   }
   .badge-tooltip::before {
     content: '';
@@ -94,7 +117,7 @@ const cardStyles = `
     transform: translateX(-50%);
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
-    border-bottom: 4px solid #000000;
+    border-bottom: 4px solid #2a2a2a;
   }
 `
 

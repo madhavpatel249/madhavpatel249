@@ -1,42 +1,66 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 const heroStyles = `
   .hero-section {
-    padding: 20px 0; /* tighter top/bottom */
+    padding: 20px 0 30px 0;
+    position: relative;
   }
   .hero-text-container {
     display: flex;
     flex-direction: column;
-    gap: 6px; /* place subtitle right under the name */
+    gap: 12px;
   }
   .name-text {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 700;
-    color: #000000;
-    margin-bottom: 0;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    transition: color 0.3s ease;
+  }
+  .dark .name-text {
+    color: #e0e0e0;
   }
   .hero-subtitle {
-    font-size: 18px;
+    font-size: 20px;
     color: #666666;
     font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  .dark .hero-subtitle {
+    color: #aaaaaa;
   }
   .hero-description {
-    font-size: 16px;
-    color: #666666;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-top: 14px;
+    font-size: 17px;
+    color: #4a4a4a;
+    line-height: 1.7;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+  }
+  .dark .hero-description {
+    color: #cccccc;
   }
   .hero-description a {
-    color: inherit; /* remove default blue */
+    color: #0066cc;
     text-decoration: none;
-    border-bottom: 1px dashed transparent;
-    transition: color 0.2s ease, border-bottom-color 0.2s ease;
-    cursor: pointer;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+    font-weight: 500;
   }
   .hero-description a:hover {
-    color: #2196f3; /* blue hover */
-    border-bottom-color: #2196f3;
+    border-bottom-color: #0066cc;
+  }
+  @media (max-width: 768px) {
+    .name-text {
+      font-size: 42px;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+    }
+    .hero-description {
+      font-size: 16px;
+    }
   }
 `
 
@@ -48,7 +72,7 @@ function Hero() {
         <div className="hero-text-container">
           <div className="name-text">Madhav Patel</div>
           <div className="hero-subtitle">
-            Software Engineering @ Ontario Tech
+            3rd Year Software Engineering @ Ontario Tech
           </div>
           <div className="hero-description">
             A full‑stack developer studying Software Engineering at Ontario Tech, driven to leverage

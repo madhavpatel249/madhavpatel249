@@ -2,42 +2,69 @@ import React from 'react'
 
 const cardStyles = `
   .about-section {
-    padding: 10px 0; /* tighter vertical spacing */
+    padding: 0;
   }
-  /* Heading removed per new minimal layout */
+  .about-section h2 {
+    margin-bottom: 16px;
+  }
   .about-section p {
-    line-height: 1.45;
-    margin-bottom: 10px;
-    font-size: 14px;
-    color: #000000;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #4a4a4a;
+    transition: color 0.3s ease;
+  }
+  .dark .about-section p {
+    color: #cccccc;
   }
   .about-section strong {
-    font-weight: bold;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: color 0.3s ease;
+  }
+  .dark .about-section strong {
+    color: #e0e0e0;
   }
   .coursework {
-    margin-top: 8px;
-    padding-top: 10px;
-    border-top: 1px solid #e6e6e6; /* softer divider */
+    margin-top: 0;
+    padding: 0;
   }
   .coursework p {
-    color: #000000;
-    font-size: 13px;
-    margin-bottom: 8px;
+    color: #1a1a1a;
+    font-size: 16px;
+    margin-bottom: 16px;
     font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  .dark .coursework p {
+    color: #e0e0e0;
   }
   .coursework-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 6px;
+    gap: 8px;
+    margin-top: 12px;
   }
   .coursework-item {
-    background-color: #f7f7f7;
-    padding: 4px 8px;
-    font-size: 12px;
-    color: #000000;
+    background-color: #ffffff;
+    padding: 6px 14px;
+    font-size: 14px;
+    color: #4a4a4a;
     border: 1px solid #e0e0e0;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+  .dark .coursework-item {
+    background-color: #2a2a2a;
+    color: #cccccc;
+    border-color: #404040;
+  }
+  .coursework-item:hover {
+    border-color: #0066cc;
+    color: #0066cc;
+    transform: translateY(-1px);
   }
 `
 

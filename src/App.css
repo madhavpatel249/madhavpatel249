@@ -1,21 +1,25 @@
 .app {
     min-height: 100vh;
-    background-color: #ffffff;
+    position: relative;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease;
 }
 
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .container main {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* tighter spacing between sections */
+    gap: 50px;
 }
 
 .container main > div {
-    scroll-margin-top: 20px;
+    scroll-margin-top: 80px;
 }
 

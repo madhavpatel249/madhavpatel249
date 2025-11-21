@@ -3,8 +3,8 @@ import React, { useRef } from 'react'
 const penguinStyles = `
   .green-penguin-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
     z-index: 999;
     cursor: pointer;
     transition: transform 0.2s ease;
@@ -13,16 +13,16 @@ const penguinStyles = `
     transform: scale(1.1);
   }
   .green-penguin {
-    height: 180px;
+    height: 160px;
     width: auto;
   }
   @media (max-width: 768px) {
     .green-penguin-container {
-      bottom: 15px;
-      right: 15px;
+      bottom: 16px;
+      right: 16px;
     }
     .green-penguin {
-      height: 140px;
+      height: 120px;
     }
   }
 `
@@ -40,16 +40,16 @@ function GreenPenguin() {
     <>
       <style>{penguinStyles}</style>
       <div className="green-penguin-container" onClick={scrollToTop}>
-        <img 
-          ref={imgRef}
-          src="/images/greenpenguin.png" 
-          alt="Green Penguin" 
-          className="green-penguin"
-          onError={(e) => {
-            console.error('Green penguin image not found');
-            e.target.style.display = 'none';
-          }}
-        />
+          <img 
+            ref={imgRef}
+            src="/images/greenpenguin.png" 
+            alt="Green Penguin" 
+            className="green-penguin"
+            onError={(e) => {
+              console.error('Green penguin image not found');
+              e.target.style.display = 'none';
+            }}
+          />
       </div>
     </>
   )

@@ -4,15 +4,50 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-    background-color: #ffffff;
-    color: #000000;
-    line-height: 1.5;
+    background-color: #fafafa;
+    color: #1a1a1a;
+    line-height: 1.6;
     font-weight: 400;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
 #root {
     min-height: 100vh;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll reveal animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
