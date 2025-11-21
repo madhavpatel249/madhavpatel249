@@ -11,23 +11,14 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(() => {
-    // Check localStorage first, then default to light mode
-    const saved = localStorage.getItem('theme')
-    if (saved) {
-      return saved === 'dark'
-    }
-    return false // Default to light mode
-  })
+  const [isDark, setIsDark] = useState(false) // Always default to light mode
 
   useEffect(() => {
-    // Update document class and localStorage
+    // Update document class only (no localStorage persistence)
     if (isDark) {
       document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
     }
   }, [isDark])
 

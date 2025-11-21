@@ -1,5 +1,8 @@
 import React, { useRef } from 'react'
 
+// Import image to ensure it's bundled correctly
+const penguinImage = '/images/greenpenguin.png'
+
 const penguinStyles = `
   .green-penguin-container {
     position: fixed;
@@ -42,12 +45,26 @@ function GreenPenguin() {
       <div className="green-penguin-container" onClick={scrollToTop}>
           <img 
             ref={imgRef}
-            src="/images/greenpenguin.png" 
+            src={penguinImage}
             alt="Green Penguin" 
             className="green-penguin"
             onError={(e) => {
-              console.error('Green penguin image not found');
-              e.target.style.display = 'none';
+              console.error('Green penguin image not found at:', e.target.src);
+              // Try alternative paths for deployment
+              const basePath = window.location.pathname.replace(/\/$/, '');
+              const paths = [
+                `${basePath}/images/greenpenguin.png`,
+                '/images/greenpenguin.png',
+                './images/greenpenguin.png',
+                'images/greenpenguin.png'
+              ];
+              const currentIndex = paths.findIndex(p => e.target.src.includes(p.split('/').pop()));
+              if (currentIndex < paths.length - 1) {
+                e.target.src = paths[currentIndex + 1];
+              } else {
+                console.error('Could not load green penguin image from any path');
+                e.target.style.display = 'none';
+              }
             }}
           />
       </div>
