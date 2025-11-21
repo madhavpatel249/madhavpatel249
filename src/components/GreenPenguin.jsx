@@ -1,7 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
-// Import image to ensure it's bundled correctly
-const penguinImage = '/images/greenpenguin.png'
+// Use Vite's base URL for proper path resolution in deployment
+const getImagePath = () => {
+  const base = import.meta.env.BASE_URL || '/'
+  return `${base}images/greenpenguin.png`.replace(/\/\//g, '/')
+}
 
 const penguinStyles = `
   .green-penguin-container {
@@ -32,12 +35,46 @@ const penguinStyles = `
 
 function GreenPenguin() {
   const imgRef = useRef(null)
+  const [imageSrc, setImageSrc] = useState(getImagePath())
+
+  useEffect(() => {
+    // Verify image exists and set correct path
+    const img = new Image()
+    img.onload = () => {
+      setImageSrc(getImagePath())
+    }
+    img.onerror = () => {
+      // Try alternative paths
+      const base = import.meta.env.BASE_URL || '/'
+      const paths = [
+        '/images/greenpenguin.png',
+        `${base}images/greenpenguin.png`.replace(/\/\//g, '/'),
+        './images/greenpenguin.png',
+        'images/greenpenguin.png'
+      ]
+      // Try each path
+      let pathIndex = 0
+      const tryNextPath = () => {
+        if (pathIndex < paths.length) {
+          const testImg = new Image()
+          testImg.onload = () => {
+            setImageSrc(paths[pathIndex])
+          }
+          testImg.onerror = () => {
+            pathIndex++
+            tryNextPath()
+          }
+          testImg.src = paths[pathIndex]
+        }
+      }
+      tryNextPath()
+    }
+    img.src = getImagePath()
+  }, [])
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-
-  // No need to reload PNG - it's a static image
 
   return (
     <>
@@ -45,24 +82,17 @@ function GreenPenguin() {
       <div className="green-penguin-container" onClick={scrollToTop}>
           <img 
             ref={imgRef}
-            src={penguinImage}
+            src={imageSrc}
             alt="Green Penguin" 
             className="green-penguin"
             onError={(e) => {
               console.error('Green penguin image not found at:', e.target.src);
-              // Try alternative paths for deployment
-              const basePath = window.location.pathname.replace(/\/$/, '');
-              const paths = [
-                `${basePath}/images/greenpenguin.png`,
-                '/images/greenpenguin.png',
-                './images/greenpenguin.png',
-                'images/greenpenguin.png'
-              ];
-              const currentIndex = paths.findIndex(p => e.target.src.includes(p.split('/').pop()));
-              if (currentIndex < paths.length - 1) {
-                e.target.src = paths[currentIndex + 1];
+              // Final fallback - try absolute URL
+              const absolutePath = `${window.location.origin}/images/greenpenguin.png`
+              if (e.target.src !== absolutePath) {
+                e.target.src = absolutePath
               } else {
-                console.error('Could not load green penguin image from any path');
+                console.error('Could not load green penguin image');
                 e.target.style.display = 'none';
               }
             }}
