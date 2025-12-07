@@ -8,7 +8,6 @@ import Projects from './components/projects/Projects'
 import Learning from './components/learning/Learning'
 // import LeetCodeActivity from './components/LeetCodeActivity' // Hidden for now
 import Footer from './components/Footer'
-import GreenPenguin from './components/GreenPenguin'
 import DarkModeToggle from './components/DarkModeToggle'
 import './App.css'
 
@@ -27,7 +26,6 @@ function App() {
     <ThemeProvider>
       <div className="app">
         <DarkModeToggle />
-        <GreenPenguin />
         <div className="container">
           <main>
             <Hero />
