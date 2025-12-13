@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { initScrollReveal } from './utils/scrollReveal'
 import FloatingNav from './components/FloatingNav'
@@ -11,9 +11,22 @@ import Footer from './components/Footer'
 import './App.css'
 
 function App() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
   useEffect(() => {
     const cleanup = initScrollReveal()
     return cleanup
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
@@ -23,12 +36,12 @@ function App() {
         <div className="container">
           <main>
             <Hero />
-            <Education />
-            <Projects />
-            <Skills />
-            <Learning />
+            <Education isVisible={isScrolled} />
+            <Projects isVisible={isScrolled} />
+            <Skills isVisible={isScrolled} />
+            <Learning isVisible={isScrolled} />
+            <Footer isVisible={isScrolled} />
           </main>
-          <Footer />
         </div>
       </div>
     </ThemeProvider>

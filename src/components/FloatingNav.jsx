@@ -37,6 +37,7 @@ const floatingNavStyles = `
     background: var(--border);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent);
   }
   .nav-icon {
     width: 20px;
@@ -75,6 +76,7 @@ const floatingNavStyles = `
     background: var(--border);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent);
   }
   .theme-icon {
     width: 20px;

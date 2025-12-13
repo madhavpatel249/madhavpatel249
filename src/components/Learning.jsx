@@ -3,7 +3,15 @@ import { learningItems } from '../data/learning'
 
 const learningStyles = `
   .learning {
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    padding-top: 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .learning.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   .section-title {
     font-size: 20px;
@@ -45,11 +53,11 @@ const learningStyles = `
   }
 `
 
-function Learning() {
+function Learning({ isVisible = false }) {
     return (
         <>
             <style>{learningStyles}</style>
-            <section className="learning reveal">
+            <section className={`learning reveal ${isVisible ? 'visible' : ''}`}>
                 <h2 className="section-title">Learning</h2>
                 <div className="learning-list">
                     {learningItems.map((item) => (

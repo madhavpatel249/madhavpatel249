@@ -6,6 +6,13 @@ const footerStyles = `
     margin-top: 60px;
     border-top: 1px solid var(--border);
     text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .footer.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   .footer-text {
     font-size: 14px;
@@ -22,11 +29,11 @@ const footerStyles = `
   }
 `
 
-function Footer() {
+function Footer({ isVisible = false }) {
     return (
         <>
             <style>{footerStyles}</style>
-            <footer className="footer">
+            <footer className={`footer ${isVisible ? 'visible' : ''}`}>
                 <p className="footer-text">
                     © {new Date().getFullYear()} Madhav Patel. Built with React.
                 </p>

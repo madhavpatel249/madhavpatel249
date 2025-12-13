@@ -32,13 +32,13 @@ const heroStyles = `
     z-index: 2;
   }
   .hero-title {
-    font-size: 17px;
+    font-size: 16px;
     color: var(--text-light);
     margin-bottom: 20px;
     font-weight: 400;
   }
   .hero-description {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text);
     line-height: 1.6;
     margin-bottom: 24px;
@@ -54,7 +54,7 @@ const heroStyles = `
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-bottom: 32px;
+    margin-bottom: 0;
   }
   .hero-link {
     width: 36px;
@@ -71,6 +71,7 @@ const heroStyles = `
   .hero-link:hover {
     background: var(--border);
     transform: translateY(-2px);
+    border-color: var(--accent);
   }
   .hero-link-icon {
     width: 18px;
@@ -185,10 +186,10 @@ const heroStyles = `
       font-size: 40px;
     }
     .hero-title {
-      font-size: 16px;
+      font-size: 15px;
     }
     .hero-description {
-      font-size: 14px;
+      font-size: 13px;
     }
     .blob {
       filter: blur(60px);

@@ -4,7 +4,14 @@ import { projects } from '../data/projects'
 const projectsStyles = `
   .projects {
     padding: 40px 0;
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .projects.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   .section-title {
     font-size: 20px;
@@ -27,32 +34,44 @@ const projectsStyles = `
     display: flex;
     flex-direction: column;
     height: 100%;
+    min-height: 400px;
+    margin: 0;
+    padding: 0;
   }
   .project-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
+    border-color: var(--accent);
   }
   .project-visual {
     width: 100%;
-    min-height: 240px;
-    background: var(--sidebar-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 50%;
+    min-height: 200px;
+    background: transparent;
+    display: block;
     overflow: hidden;
     position: relative;
     flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
   }
   .project-visual img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
     display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
   }
   .project-visual-placeholder {
     width: 100%;
     height: 100%;
-    background: var(--sidebar-bg);
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,22 +83,37 @@ const projectsStyles = `
     opacity: 0.3;
   }
   .project-content {
-    padding: 16px;
+    padding: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
   }
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+  }
   .project-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 8px;
+    margin: 0;
+  }
+  .project-title-link {
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .project-title-link:hover {
+    text-decoration: underline;
   }
   .project-description {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text);
     line-height: 1.5;
-    margin-bottom: 12px;
+    margin-bottom: 0px;
     flex: 1;
   }
   .project-description strong {
@@ -89,7 +123,7 @@ const projectsStyles = `
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 6px;
     border-top: 1px solid var(--border);
     margin-top: auto;
   }
@@ -108,14 +142,6 @@ const projectsStyles = `
   .project-links {
     display: flex;
     gap: 12px;
-  }
-  .project-link {
-    font-size: 13px;
-    color: var(--accent);
-    text-decoration: none;
-  }
-  .project-link:hover {
-    text-decoration: underline;
   }
   .project-status {
     font-size: 10px;
@@ -138,16 +164,16 @@ const projectsStyles = `
       min-height: 200px;
     }
     .project-content {
-      padding: 14px;
+      padding: 10px;
     }
   }
 `
 
-function Projects() {
+function Projects({ isVisible = false }) {
     return (
         <>
             <style>{projectsStyles}</style>
-            <section id="projects" className="projects reveal">
+            <section id="projects" className={`projects reveal ${isVisible ? 'visible' : ''}`}>
                 <h2 className="section-title">Projects</h2>
                 <div className="projects-grid">
                     {projects.map((project) => (
@@ -164,7 +190,20 @@ function Projects() {
                                 )}
                             </div>
                             <div className="project-content">
-                                <h3 className="project-title">{project.title}</h3>
+                                <div className="project-header">
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <div className="project-links">
+                                        {project.link && (
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-title-link">Link</a>
+                                        )}
+                                        {project.codeLink && project.codeLink !== '#' && (
+                                            <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-title-link">Code</a>
+                                        )}
+                                        {project.demoLink && project.demoLink !== '#' && (
+                                            <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-title-link">Demo</a>
+                                        )}
+                                    </div>
+                                </div>
                                 <div className="project-description">{project.description}</div>
                                 <div className="project-footer">
                                     {project.technologies && project.technologies.length > 0 && (
@@ -174,24 +213,9 @@ function Projects() {
                                             ))}
                                         </div>
                                     )}
-                                    <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                                        {project.status && (
-                                            <span className="project-status">{project.status}</span>
-                                        )}
-                                        {!project.status && (
-                                            <div className="project-links">
-                                                {project.link && (
-                                                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="project-link">Link</a>
-                                                )}
-                                                {project.codeLink && project.codeLink !== '#' && (
-                                                    <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-link">Code</a>
-                                                )}
-                                                {project.demoLink && project.demoLink !== '#' && (
-                                                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-link">Demo</a>
-                                                )}
-                                            </div>
-                                        )}
-                                    </div>
+                                    {project.status && (
+                                        <span className="project-status">{project.status}</span>
+                                    )}
                                 </div>
                             </div>
                         </div>

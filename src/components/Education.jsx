@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const educationStyles = `
   .education {
-    padding: 30px 0;
-    margin-bottom: 30px;
+    padding: 0 0 40px 0;
+    margin-top: -80px;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+  .education.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
   }
   .section-title {
     font-size: 20px;
@@ -40,7 +50,7 @@ const educationStyles = `
     flex: 1;
   }
   .education-title {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--text);
     margin-bottom: 4px;
@@ -103,11 +113,11 @@ const COURSEWORK = [
     'Intro to AI'
 ]
 
-function Education() {
+function Education({ isVisible = false }) {
     return (
         <>
             <style>{educationStyles}</style>
-            <section className="education reveal">
+            <section className={`education ${isVisible ? 'visible' : ''}`}>
                 <h2 className="section-title">Education</h2>
                 <div className="education-content">
                     <div className="university-logo-container">

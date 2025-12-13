@@ -2,7 +2,14 @@ import React from 'react'
 
 const skillsStyles = `
   .skills {
-    margin-bottom: 30px;
+    margin-bottom: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .skills.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
   .section-title {
     font-size: 20px;
@@ -31,6 +38,12 @@ const skillsStyles = `
     margin: 0 auto 8px;
     object-fit: contain;
   }
+  .skill-icon[src*="express"] {
+    filter: none;
+  }
+  .dark .skill-icon[src*="express"] {
+    filter: brightness(0) invert(1);
+  }
   .skill-name {
     font-size: 12px;
     color: var(--text);
@@ -39,6 +52,17 @@ const skillsStyles = `
     font-size: 13px;
     color: var(--text);
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 28px;
+    margin: 0;
+  }
+  .skill[data-text-only="true"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @media (max-width: 768px) {
     .skills-grid {
@@ -68,15 +92,15 @@ const TECHNOLOGIES = [
     { name: 'Linux', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' }
 ]
 
-function Skills() {
+function Skills({ isVisible = false }) {
     return (
         <>
             <style>{skillsStyles}</style>
-            <section className="skills reveal">
+            <section className={`skills reveal ${isVisible ? 'visible' : ''}`}>
                 <h2 className="section-title">Skills</h2>
                 <div className="skills-grid">
                     {TECHNOLOGIES.map((tech, index) => (
-                        <div key={index} className="skill">
+                        <div key={index} className="skill" data-text-only={tech.textOnly ? "true" : "false"}>
                             {tech.textOnly ? (
                                 <div className="skill-text">{tech.name}</div>
                             ) : (
@@ -85,7 +109,6 @@ function Skills() {
                                         src={tech.icon} 
                                         alt={tech.name} 
                                         className="skill-icon"
-                                        style={{ filter: 'none' }}
                                     />
                                     <div className="skill-name">{tech.name}</div>
                                 </>
