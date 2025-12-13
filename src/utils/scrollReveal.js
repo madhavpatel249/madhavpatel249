@@ -1,9 +1,3 @@
-/**
- * Scroll reveal utility
- * Single Responsibility: Handle scroll reveal animations
- * KISS: Simple utility function
- */
-
 export const initScrollReveal = () => {
   const observerOptions = {
     threshold: 0.1,

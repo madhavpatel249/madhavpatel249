@@ -11,14 +11,21 @@ export const useTheme = () => {
 }
 
 export const ThemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState(false) // Always default to light mode
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme')
+    if (saved) {
+      return saved === 'dark'
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  })
 
   useEffect(() => {
-    // Update document class only (no localStorage persistence)
     if (isDark) {
       document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
     } else {
       document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
     }
   }, [isDark])
 
@@ -32,4 +39,3 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   )
 }
-

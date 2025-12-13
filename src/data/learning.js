@@ -1,4 +1,3 @@
-// Learning data - separated from component logic
 export const learningItems = [
   {
     id: 'pytorch',
@@ -13,4 +12,3 @@ export const learningItems = [
     description: 'Exploring AWS services and cloud infrastructure to build modern, scalable applications.',
   },
 ]
-

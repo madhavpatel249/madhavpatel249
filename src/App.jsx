@@ -1,21 +1,15 @@
 import React, { useEffect } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { initScrollReveal } from './utils/scrollReveal'
+import FloatingNav from './components/FloatingNav'
 import Hero from './components/Hero'
-import About from './components/About'
-import Technologies from './components/Technologies'
-import Projects from './components/projects/Projects'
-import Learning from './components/learning/Learning'
-// import LeetCodeActivity from './components/LeetCodeActivity' // Hidden for now
+import Education from './components/Education'
+import Projects from './components/Projects'
+import Skills from './components/Skills'
+import Learning from './components/Learning'
 import Footer from './components/Footer'
-import DarkModeToggle from './components/DarkModeToggle'
 import './App.css'
 
-/**
- * Main App component
- * Single Responsibility: Compose the application structure
- * KISS: Simple composition of components
- */
 function App() {
   useEffect(() => {
     const cleanup = initScrollReveal()
@@ -25,15 +19,14 @@ function App() {
   return (
     <ThemeProvider>
       <div className="app">
-        <DarkModeToggle />
+        <FloatingNav />
         <div className="container">
           <main>
             <Hero />
-            <div id="about" className="reveal"><About /></div>
-            <div id="skills" className="reveal"><Technologies /></div>
-            <div id="projects" className="reveal"><Projects /></div>
-            <div id="learning" className="reveal"><Learning /></div>
-            {/* <div id="leetcode" className="reveal"><LeetCodeActivity /></div> */}
+            <Education />
+            <Projects />
+            <Skills />
+            <Learning />
           </main>
           <Footer />
         </div>
@@ -43,4 +36,3 @@ function App() {
 }
 
 export default App
-

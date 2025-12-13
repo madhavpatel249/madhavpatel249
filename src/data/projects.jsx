@@ -1,7 +1,18 @@
 import React from 'react'
 
-// Projects data - separated from component logic
 export const projects = [
+  {
+    id: 'mesh',
+    title: 'Mesh',
+    description: (
+      <>
+        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
+      </>
+    ),
+    technologies: ['Next.js', 'React Three Fiber', 'Supabase', 'TypeScript'],
+    image: '/images/MeshProjectImage.png',
+    link: 'https://meshtech-alpha.vercel.app/',
+  },
   {
     id: 'ai-resume-analyzer',
     title: 'AI Resume Analyzer',
@@ -47,4 +58,3 @@ export const projects = [
     demoLink: 'https://ticketsale-xi.vercel.app/',
   },
 ]
-

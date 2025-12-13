@@ -1,25 +1,23 @@
 .app {
     min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-    transition: background-color 0.3s ease;
+    background: var(--bg);
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 60px 20px;
-    position: relative;
-    z-index: 1;
+    padding: 0 24px;
 }
 
-.container main {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+main {
+    padding: 0;
+    margin: 0;
 }
 
-.container main > div {
-    scroll-margin-top: 80px;
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
 }
-
