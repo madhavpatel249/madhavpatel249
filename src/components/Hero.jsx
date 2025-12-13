@@ -297,7 +297,7 @@ function Hero() {
                 }
                 timer = setTimeout(() => {
                     setShowScrollIndicator(true)
-                }, 1000)
+                }, 0)
             }
         }
 
@@ -305,7 +305,7 @@ function Hero() {
             if (window.scrollY <= 50) {
                 setShowScrollIndicator(true)
             }
-        }, 1000)
+        }, 0)
 
         window.addEventListener('scroll', handleScroll, { passive: true })
         
