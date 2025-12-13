@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 const educationStyles = `
   .education {
     padding: 0 0 40px 0;
-    margin-top: -80px;
+    margin-top: -170px;
     margin-bottom: 0;
     opacity: 0;
     transform: translateY(20px);

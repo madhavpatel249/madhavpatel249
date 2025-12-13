@@ -134,7 +134,7 @@ function FloatingNav() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsVisible(window.scrollY > 100)
+            setIsVisible(window.scrollY > 50)
         }
 
         window.addEventListener('scroll', handleScroll, { passive: true })

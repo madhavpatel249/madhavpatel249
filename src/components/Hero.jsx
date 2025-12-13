@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const heroStyles = `
   .hero {
@@ -178,6 +178,63 @@ const heroStyles = `
   .dark .blob {
     opacity: 0.2;
   }
+  .scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+  .scroll-indicator.visible {
+    opacity: 1;
+    pointer-events: none;
+  }
+  .scroll-indicator-arrow {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .scroll-indicator.visible .scroll-indicator-arrow {
+    animation: bounce 2s ease-in-out infinite;
+  }
+  .scroll-indicator-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  @media (max-width: 768px) {
+    .scroll-indicator-arrow {
+      width: 40px;
+      height: 40px;
+    }
+    .scroll-indicator-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
   @media (max-width: 768px) {
     .hero {
       padding: 30px 0;
@@ -222,9 +279,54 @@ const heroStyles = `
 `
 
 function Hero() {
+    const [showScrollIndicator, setShowScrollIndicator] = useState(false)
+
+    useEffect(() => {
+        let timer = null
+
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setShowScrollIndicator(false)
+                if (timer) {
+                    clearTimeout(timer)
+                    timer = null
+                }
+            } else if (window.scrollY <= 50) {
+                if (timer) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(() => {
+                    setShowScrollIndicator(true)
+                }, 3000)
+            }
+        }
+
+        timer = setTimeout(() => {
+            if (window.scrollY <= 50) {
+                setShowScrollIndicator(true)
+            }
+        }, 3000)
+
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        
+        return () => {
+            if (timer) {
+                clearTimeout(timer)
+            }
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
     return (
         <>
             <style>{heroStyles}</style>
+            <div className={`scroll-indicator ${showScrollIndicator ? 'visible' : ''}`}>
+                <div className="scroll-indicator-arrow">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                    </svg>
+                </div>
+            </div>
             <section id="home" className="hero reveal">
                 <div className="hero-blobs">
                     <div className="blob blob-1"></div>
