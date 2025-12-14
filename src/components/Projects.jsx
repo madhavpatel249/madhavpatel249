@@ -34,9 +34,12 @@ const projectsStyles = `
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 400px;
+    min-height: 300px;
     margin: 0;
     padding: 0;
+  }
+  .project-card.has-image {
+    min-height: 400px;
   }
   .project-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -177,18 +180,20 @@ function Projects({ isVisible = false }) {
                 <h2 className="section-title">Projects</h2>
                 <div className="projects-grid">
                     {projects.map((project) => (
-                        <div key={project.id} className="project-card">
-                            <div className="project-visual">
-                                {project.image ? (
+                        <div key={project.id} className={`project-card ${project.image || project.id !== 'task-scheduler' ? 'has-image' : ''}`}>
+                            {project.image ? (
+                                <div className="project-visual">
                                     <img src={project.image} alt={project.title} />
-                                ) : (
+                                </div>
+                            ) : project.id !== 'task-scheduler' ? (
+                                <div className="project-visual">
                                     <div className="project-visual-placeholder">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                                         </svg>
                                     </div>
-                                )}
-                            </div>
+                                </div>
+                            ) : null}
                             <div className="project-content">
                                 <div className="project-header">
                                     <h3 className="project-title">{project.title}</h3>

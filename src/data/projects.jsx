@@ -29,9 +29,20 @@ export const projects = [
     demoLink: '#',
   },
   {
+    id: 'task-scheduler',
+    title: 'Task Scheduler & Workflow Orchestrator',
+    description: (
+      <>
+        Designed and implemented a Unix-based task scheduling and workflow orchestration system in Bash, enabling automated execution of dependent multi-step processes with intelligent retry logic and real-time Slack notifications. The system enforces sequential dependencies, supports Cron-based recurring execution, and provides centralized logging and CLI-based controls.
+      </>
+    ),
+    technologies: ['Bash', 'Cron', 'Slack Webhooks', 'Linux', 'CLI Design'],
+    codeLink: '#',
+    demoLink: '#',
+  },
+  {
     id: 'car-marketplace',
     title: 'Car Marketplace',
-    status: 'In Progress',
     description: (
       <>
         Designed a full‑stack marketplace featuring dynamic listings and a 
@@ -40,6 +51,7 @@ export const projects = [
       </>
     ),
     technologies: ['React', 'Node.js', 'Express.js', 'MySQL'],
+    image: '/images/CarMarketplaceProjectImage.png',
     codeLink: '#',
     demoLink: '#',
   },
@@ -54,7 +66,7 @@ export const projects = [
       </>
     ),
     technologies: ['React', 'JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'TailwindCSS', 'Git'],
-    codeLink: 'https://github.com/madhavpatel249/TicketSale',
+    image: '/images/EventlyProjectImage.png',
     demoLink: 'https://ticketsale-xi.vercel.app/',
   },
 ]
