@@ -30,16 +30,16 @@ const footerStyles = `
 `
 
 function Footer({ isVisible = false }) {
-    return (
-        <>
-            <style>{footerStyles}</style>
+  return (
+    <>
+      <style>{footerStyles}</style>
             <footer className={`footer ${isVisible ? 'visible' : ''}`}>
                 <p className="footer-text">
                     © {new Date().getFullYear()} Madhav Patel. Built with React.
                 </p>
-            </footer>
-        </>
-    )
+      </footer>
+    </>
+  )
 }
 
 export default Footer

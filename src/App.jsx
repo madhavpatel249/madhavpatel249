@@ -5,6 +5,7 @@ import FloatingNav from './components/FloatingNav'
 import Hero from './components/Hero'
 import Education from './components/Education'
 import Projects from './components/Projects'
+import Experience from './components/Experience'
 import Skills from './components/Skills'
 import Learning from './components/Learning'
 import Footer from './components/Footer'
@@ -31,17 +32,18 @@ function App() {
 
   return (
     <ThemeProvider>
-      <div className="app">
+    <div className="app">
         <FloatingNav />
-        <div className="container">
-          <main>
-            <Hero />
+      <div className="container">
+        <main>
+          <Hero />
             <Education isVisible={isScrolled} />
+            <Experience isVisible={isScrolled} />
             <Projects isVisible={isScrolled} />
             <Skills isVisible={isScrolled} />
             <Learning isVisible={isScrolled} />
             <Footer isVisible={isScrolled} />
-          </main>
+        </main>
         </div>
       </div>
     </ThemeProvider>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 const educationStyles = `
   .education {
-    padding: 0 0 40px 0;
+    padding: 0 0 60px 0;
     margin-top: -170px;
     margin-bottom: 0;
     opacity: 0;

@@ -2,11 +2,25 @@ import React from 'react'
 
 export const projects = [
   {
+    id: 'codebuddy',
+    title: 'CodeBuddy',
+    subtitle: 'Alameda Hacks - Hackathon Participant',
+    description: (
+      <>
+        Built a code documentation platform using <strong>Django REST Framework and Flask</strong> that integrates with GitHub to analyze repositories.
+        Developed automated repository processing with <strong>GitHub OAuth authentication</strong> and organization management to help developers understand and document codebases.
+      </>
+    ),
+    technologies: ['Django', 'Flask', 'GitHub API', 'Mistral AI', 'SQLite', 'Jinja'],
+    demoLink: 'https://devpost.com/software/codebuddy-cwlmpe',
+    videoLink: 'https://www.youtube.com/watch?v=6t7L8p_sXHs',
+  },
+  {
     id: 'mesh',
     title: 'Mesh',
     description: (
       <>
-        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
+        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network supporting <strong>25+ active users</strong> that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
       </>
     ),
     technologies: ['Next.js', 'React Three Fiber', 'Supabase', 'TypeScript'],
@@ -25,6 +39,19 @@ export const projects = [
       </>
     ),
     technologies: ['React', 'Python', 'FastAPI', 'OpenAI API', 'TailwindCSS', 'Git'],
+    codeLink: '#',
+    demoLink: '#',
+  },
+  {
+    id: 'battery-health-prediction',
+    title: 'Battery Health Prediction System',
+    description: (
+      <>
+        Built a machine learning system using <strong>Python, pandas, and scikit-learn</strong> to process and analyze 670+ battery cell measurements.
+        Developed an ETL pipeline with automated feature extraction and achieved <strong>R² = 1.0 accuracy</strong> in predicting battery health.
+      </>
+    ),
+    technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Joblib'],
     codeLink: '#',
     demoLink: '#',
   },
