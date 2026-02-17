@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
+import confetti from 'canvas-confetti'
 import { projects } from '../data/projects'
 
 const projectsStyles = `
@@ -33,13 +34,26 @@ const projectsStyles = `
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 300px;
+    height: 430px;
+    min-height: 430px;
     margin: 0;
     padding: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
-  .project-card.has-image {
-    min-height: 400px;
+  .dark .project-card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  }
+  .project-card.pinpoint-card {
+    position: relative;
+  }
+  .project-card.pinpoint-card .confetti-canvas {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    pointer-events: none;
+    z-index: 1;
   }
   .project-card:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -48,6 +62,7 @@ const projectsStyles = `
   }
   .project-visual {
     width: 100%;
+    max-width: 100%;
     height: 50%;
     min-height: 200px;
     background: transparent;
@@ -58,10 +73,11 @@ const projectsStyles = `
     margin: 0;
     padding: 0;
     border: none;
-    border-radius: 0;
+    border-radius: 8px 8px 0 0;
   }
   .project-visual img {
     width: 100%;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
@@ -69,7 +85,7 @@ const projectsStyles = `
     margin: 0;
     padding: 0;
     border: none;
-    border-radius: 0;
+    border-radius: 8px 8px 0 0;
   }
   .project-visual-placeholder {
     width: 100%;
@@ -81,7 +97,7 @@ const projectsStyles = `
     color: var(--text-light);
   }
   .project-visual-placeholder.youtube-placeholder {
-    background: #1a1a1a;
+    background: var(--bg);
     position: relative;
     padding: 0;
     overflow: hidden;
@@ -90,9 +106,11 @@ const projectsStyles = `
     height: 100%;
     box-sizing: border-box;
     margin: 0;
+    border-radius: 8px 8px 0 0;
   }
   .project-visual-placeholder.youtube-placeholder img {
     width: 100%;
+    max-width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center center;
@@ -100,6 +118,7 @@ const projectsStyles = `
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border-radius: 8px 8px 0 0;
   }
   .project-visual-placeholder svg {
     width: 80px;
@@ -114,15 +133,17 @@ const projectsStyles = `
     stroke: none;
   }
   .project-content {
-    padding: 12px;
+    padding: 14px 14px 0px;
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-height: 0;
   }
   .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 6px;
   }
   .project-title {
@@ -130,10 +151,11 @@ const projectsStyles = `
     font-weight: 600;
     color: var(--text);
     margin: 0;
+    line-height: 1.3;
   }
   .project-subtitle {
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 500;
     color: #B8860B;
     margin: 2px 0 0 0;
     font-style: italic;
@@ -145,28 +167,38 @@ const projectsStyles = `
     font-size: 13px;
     color: var(--accent);
     text-decoration: none;
-    transition: all 0.2s;
+    transition: color 0.2s;
+    flex-shrink: 0;
   }
   .project-title-link:hover {
     text-decoration: underline;
   }
   .project-description {
     font-size: 13px;
-    color: var(--text);
+    color: var(--text-light);
     line-height: 1.5;
-    margin-bottom: 0px;
+    margin: 0;
     flex: 1;
+    min-height: 0;
   }
   .project-description strong {
     font-weight: 600;
+    color: var(--text);
+  }
+  .project-description-spacer {
+    flex-shrink: 0;
+    width: 100%;
+    height: 24px;
   }
   .project-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 6px;
-    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 0 14px 0;
     margin-top: auto;
+    flex-shrink: 0;
   }
   .project-tech {
     display: flex;
@@ -177,21 +209,29 @@ const projectsStyles = `
     font-size: 11px;
     color: var(--text-light);
     background: var(--border);
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  .dark .tech-tag {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.12);
   }
   .project-links {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
   }
   .project-status {
     font-size: 10px;
     color: var(--text-light);
     background: var(--border);
-    padding: 3px 8px;
-    border-radius: 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
     white-space: nowrap;
     font-weight: 500;
+  }
+  .dark .project-status {
+    background: rgba(255, 255, 255, 0.12);
   }
   @media (max-width: 768px) {
     .projects {
@@ -205,12 +245,52 @@ const projectsStyles = `
       min-height: 200px;
     }
     .project-content {
-      padding: 10px;
+      padding: 12px 12px 0;
+    }
+    .project-footer {
+      padding: 8px 0 14px;
     }
   }
 `
 
+const NO_IMAGE_PROJECT_IDS = ['ai-resume-analyzer', 'battery-health-prediction'];
+
 function Projects({ isVisible = false }) {
+    const pinpointCardRef = useRef(null);
+    const confettiFiredRef = useRef(false);
+
+    useEffect(() => {
+        const el = pinpointCardRef.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const [entry] = entries;
+                if (confettiFiredRef.current || entry.intersectionRatio < 0.75) return;
+                confettiFiredRef.current = true;
+
+                const canvas = document.createElement('canvas');
+                canvas.className = 'confetti-canvas';
+                const w = el.offsetWidth * 1.2;
+                const h = el.offsetHeight * 1.2;
+                canvas.width = w;
+                canvas.height = h;
+                el.appendChild(canvas);
+
+                const fire = confetti.create(canvas, { resize: false });
+                const count = 120;
+                const defaults = { origin: { x: 0.5, y: 0.5 } };
+                fire({ ...defaults, particleCount: count, spread: 70 });
+                fire({ ...defaults, particleCount: count * 0.4, spread: 100, scalar: 1.2 });
+                setTimeout(() => {
+                    fire({ ...defaults, particleCount: 40, spread: 60, startVelocity: 30 });
+                }, 150);
+            },
+            { threshold: 0.75, rootMargin: '0px' }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
+
     const getYouTubeThumbnail = (url) => {
         if (!url) return null;
         const videoId = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/)?.[1];
@@ -226,15 +306,16 @@ function Projects({ isVisible = false }) {
         <div className="projects-grid">
                     {projects.map((project) => {
                         const youtubeThumbnail = project.videoLink ? getYouTubeThumbnail(project.videoLink) : null;
+                        const showImageSection = project.image || !NO_IMAGE_PROJECT_IDS.includes(project.id);
                         return (
-                        <div key={project.id} className={`project-card ${project.image || project.id !== 'task-scheduler' ? 'has-image' : ''}`}>
+                        <div key={project.id} ref={project.id === 'pinpoint' ? pinpointCardRef : undefined} className={`project-card ${showImageSection ? 'has-image' : ''} ${project.id === 'pinpoint' ? 'pinpoint-card' : ''}`} data-project-id={project.id}>
                             {project.image ? (
                                 <div className="project-visual">
                                     <img src={project.image} alt={project.title} />
                                 </div>
-                            ) : project.id !== 'task-scheduler' ? (
+                            ) : !NO_IMAGE_PROJECT_IDS.includes(project.id) ? (
                                 <div className="project-visual">
-                                    {project.id === 'codebuddy' && project.videoLink && youtubeThumbnail ? (
+                                    {project.videoLink && youtubeThumbnail ? (
                                         <a href={project.videoLink} target="_blank" rel="noopener noreferrer" className="project-visual-placeholder youtube-placeholder" style={{ textDecoration: 'none', cursor: 'pointer' }}>
                                             <img src={youtubeThumbnail} alt={`${project.title} video thumbnail`} />
                                             <div className="youtube-play-overlay">
@@ -269,17 +350,16 @@ function Projects({ isVisible = false }) {
                                             <a href={project.codeLink} target="_blank" rel="noopener noreferrer" className="project-title-link">Code</a>
                                         )}
                                         {project.demoLink && project.demoLink !== '#' && (
-                                            <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-title-link">
-                                                {project.id === 'codebuddy' ? 'Devpost' : 'Demo'}
-                                            </a>
+                                            <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="project-title-link">Demo</a>
                 )}
                                     </div>
               </div>
               <div className="project-description">{project.description}</div>
+                                <div className="project-description-spacer" />
                                 <div className="project-footer">
               {project.technologies && project.technologies.length > 0 && (
                 <div className="project-tech">
-                                            {project.technologies.slice(0, 4).map((tech, index) => (
+                                            {project.technologies.map((tech, index) => (
                                                 <span key={index} className="tech-tag">{tech}</span>
                   ))}
                 </div>

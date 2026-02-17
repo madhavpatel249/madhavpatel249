@@ -7,11 +7,12 @@ const heroStyles = `
     align-items: center;
     padding: 40px 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     margin-top: 0;
     padding-top: 0;
+    background: transparent;
   }
   .hero-content {
     max-width: 900px;
@@ -92,12 +93,11 @@ const heroStyles = `
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+    height: 150vh;
+    min-height: 150vh;
     z-index: 0;
     pointer-events: none;
-    overflow: hidden;
+    overflow: visible;
   }
   .blob {
     position: absolute;
@@ -155,14 +155,7 @@ const heroStyles = `
     animation-delay: 12s;
   }
   .hero-fade-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60%;
-    background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
-    z-index: 1;
-    pointer-events: none;
+    display: none;
   }
   @keyframes blobFloat {
     0%, 100% {

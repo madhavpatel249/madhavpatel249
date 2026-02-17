@@ -22,18 +22,8 @@ const experienceStyles = `
     color: var(--text);
   }
   .experience-item {
-    background: var(--bg);
-    border: 1px solid transparent;
-    border-radius: 8px;
-    padding: 16px;
-    margin: -16px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-  .experience-item:hover {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
-    border-color: var(--accent);
+    padding: 0;
+    margin: 0;
   }
   .experience-content {
     display: flex;

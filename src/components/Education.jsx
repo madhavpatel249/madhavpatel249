@@ -28,22 +28,25 @@ const educationStyles = `
     margin-bottom: 24px;
   }
   .university-logo-container {
-    width: 60px;
-    height: 60px;
+    width: 72px;
+    height: 72px;
     flex-shrink: 0;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 4px;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
+  .dark .university-logo-container {
+    background: #000000;
+  }
   .university-logo {
-    width: 200%;
-    height: 180%;
-    object-fit: cover;
+    width: 120%;
+    height: 120%;
+    object-fit: contain;
     object-position: center;
   }
   .education-info {
@@ -122,7 +125,7 @@ function Education({ isVisible = false }) {
                 <div className="education-content">
                     <div className="university-logo-container">
                         <img 
-                            src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a0/a0/ec/a0a0ece7-cac2-74a1-4bbb-be5caf5d514c/Icon-0-0-1x_U007emarketing-0-7-0-85-220.png/1200x630wa.png" 
+                            src="/images/otechu.png" 
                             alt="Ontario Tech University" 
                             className="university-logo"
                         />

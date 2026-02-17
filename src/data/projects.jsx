@@ -2,6 +2,44 @@ import React from 'react'
 
 export const projects = [
   {
+    id: 'pinpoint',
+    title: 'Pinpoint',
+    subtitle: 'QHacks 2026 Winner · Mayor\'s Innovation Challenge',
+    description: (
+      <>
+        A <strong>QHacks 2026–winning</strong> app that maps rental listings and roommate seekers. Built with React, Next.js, TypeScript, Supabase, and Tailwind CSS. Selected for the <strong>Mayor's Innovation Challenge</strong> with the opportunity to pitch to the Mayor of Kingston in March 2026.
+      </>
+    ),
+    technologies: ['React', 'Next.js', 'TypeScript', 'Gemini'],
+    image: '/images/pinpoint.png',
+    link: 'https://usepinpoint.vercel.app',
+  },
+  {
+    id: 'mesh',
+    title: 'Mesh',
+    description: (
+      <>
+        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network supporting <strong>25+ active users</strong> that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
+      </>
+    ),
+    technologies: ['React', 'Next.js', 'TypeScript', 'Three.js', 'PostgreSQL'],
+    image: '/images/MeshProjectImage.png',
+    link: 'https://mesh-otu.com',
+  },
+  {
+    id: 'nervy',
+    title: 'Nervy - AI Interview Coach',
+    subtitle: 'HackHive 2026 - Hackathon Participant',
+    description: (
+      <>
+        Full-stack <strong>AI interview coach</strong> that gives real-time feedback on verbal and non-verbal performance. Users practice via webcam; the app analyzes eye contact, posture, and tone and surfaces actionable insights. Includes <strong>Sign Captions</strong>: real-time ASL-to-text so interview practice is accessible to signers.
+      </>
+    ),
+    technologies: ['PyTorch', 'MediaPipe', 'Gemini', 'Next.js', 'React', 'TypeScript'],
+    image: '/images/nervy.png',
+    demoLink: 'https://www.youtube.com/watch?v=OjtCO2DYJLY',
+  },
+  {
     id: 'codebuddy',
     title: 'CodeBuddy',
     subtitle: 'Alameda Hacks - Hackathon Participant',
@@ -12,20 +50,7 @@ export const projects = [
       </>
     ),
     technologies: ['Django', 'Flask', 'GitHub API', 'Mistral AI', 'SQLite', 'Jinja'],
-    demoLink: 'https://devpost.com/software/codebuddy-cwlmpe',
     videoLink: 'https://www.youtube.com/watch?v=6t7L8p_sXHs',
-  },
-  {
-    id: 'mesh',
-    title: 'Mesh',
-    description: (
-      <>
-        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network supporting <strong>25+ active users</strong> that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
-      </>
-    ),
-    technologies: ['Next.js', 'React Three Fiber', 'Supabase', 'TypeScript'],
-    image: '/images/MeshProjectImage.png',
-    link: 'https://meshtech-alpha.vercel.app/',
   },
   {
     id: 'ai-resume-analyzer',
@@ -38,7 +63,7 @@ export const projects = [
         <strong> 90% success rate</strong> for multi‑format resumes.
       </>
     ),
-    technologies: ['React', 'Python', 'FastAPI', 'OpenAI API', 'TailwindCSS', 'Git'],
+    technologies: ['React', 'Python', 'FastAPI', 'OpenAI API'],
     codeLink: '#',
     demoLink: '#',
   },
@@ -54,46 +79,5 @@ export const projects = [
     technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Joblib'],
     codeLink: '#',
     demoLink: '#',
-  },
-  {
-    id: 'task-scheduler',
-    title: 'Task Scheduler & Workflow Orchestrator',
-    description: (
-      <>
-        Designed and implemented a Unix-based task scheduling and workflow orchestration system in Bash, enabling automated execution of dependent multi-step processes with intelligent retry logic and real-time Slack notifications. The system enforces sequential dependencies, supports Cron-based recurring execution, and provides centralized logging and CLI-based controls.
-      </>
-    ),
-    technologies: ['Bash', 'Cron', 'Slack Webhooks', 'Linux', 'CLI Design'],
-    codeLink: '#',
-    demoLink: '#',
-  },
-  {
-    id: 'car-marketplace',
-    title: 'Car Marketplace',
-    description: (
-      <>
-        Designed a full‑stack marketplace featuring dynamic listings and a 
-        seller review system, centered on an optimized <strong>5‑entity relational MySQL database</strong> 
-        and performance‑driven client‑side filtering solutions.
-      </>
-    ),
-    technologies: ['React', 'Node.js', 'Express.js', 'MySQL'],
-    image: '/images/CarMarketplaceProjectImage.png',
-    codeLink: '#',
-    demoLink: '#',
-  },
-  {
-    id: 'evently',
-    title: 'Evently',
-    description: (
-      <>
-        Architected and deployed a highly scalable MERN‑stack Event Platform supporting <strong>50+ user events</strong>,
-         strategically refactoring its <strong>10+ RESTful APIs</strong> into a professional controller‑based pattern to 
-         maximize backend maintainability.
-      </>
-    ),
-    technologies: ['React', 'JavaScript', 'Node.js', 'Express.js', 'MongoDB', 'TailwindCSS', 'Git'],
-    image: '/images/EventlyProjectImage.png',
-    demoLink: 'https://ticketsale-xi.vercel.app/',
   },
 ]
