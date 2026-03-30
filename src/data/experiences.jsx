@@ -1,20 +1,21 @@
-import React from 'react'
-
 export const experiences = [
   {
-    id: 'workflow-automator',
-    title: 'Workflow Automator',
-    company: 'Venture for Canada',
-    employmentType: 'Contract Part-time',
-    duration: 'Jan 2026 - Present',
-    durationDetail: '1 mo',
-    location: 'Remote',
-    program: 'VFC Intrapreneurship Program',
-    partnership: 'Partnership with Calgary Newcomer\'s Guide',
-    responsibilities: [
-      'Built automated client management system with Power Automate, SharePoint, and Forms that eliminated manual registration workflows',
-      'Created technical documentation and training to enable independent platform maintenance by non-technical staff'
-    ],
-    logo: '/images/vfc.ico'
+    id: 'data-analyst-intern',
+    title: 'Data Analyst Intern',
+    company: 'Deighton Associates Ltd.',
+    duration: 'Incoming S26',
+    logo: '/images/deighton_logo.png',
+    banner: '/images/deighton_banner.webp',
+    glowColor: 'rgba(80, 140, 210, 0.5)'
+  },
+  {
+    id: 'automation-intern',
+    title: 'Automation Intern',
+    company: 'Calgary Newcomer\'s Guide',
+    duration: 'W26',
+    logo: '/images/cng_logo.webp',
+    banner: '/images/cng_banner.webp',
+    bannerSize: 'small',
+    glowColor: 'rgba(50, 120, 200, 0.5)'
   }
 ]

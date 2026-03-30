@@ -1,83 +1,43 @@
-import React from 'react'
-
 export const projects = [
+  {
+    id: 'clarus',
+    title: 'Clarus',
+    subtitle: '2x HackCanada 2026 Winner',
+    year: '2026',
+    shortDescription: 'A clinic automation tool that handles patient outreach, follow-ups, scheduling, and referrals.',
+    image: '/images/clarus.mp4',
+    demoLink: 'https://youtu.be/ysAsUXv447Y',
+    fitImage: true,
+    glowColor: 'rgba(140, 150, 100, 0.7)',
+  },
   {
     id: 'pinpoint',
     title: 'Pinpoint',
-    subtitle: 'QHacks 2026 Winner · Mayor\'s Innovation Challenge',
-    description: (
-      <>
-        A <strong>QHacks 2026–winning</strong> app that maps rental listings and roommate seekers. Built with React, Next.js, TypeScript, Supabase, and Tailwind CSS. Selected for the <strong>Mayor's Innovation Challenge</strong> with the opportunity to pitch to the Mayor of Kingston in March 2026.
-      </>
-    ),
-    technologies: ['React', 'Next.js', 'TypeScript', 'Gemini'],
-    image: '/images/pinpoint.png',
-    link: 'https://usepinpoint.vercel.app',
+    subtitle: 'QHacks 2026 Winner',
+    year: '2026',
+    shortDescription: 'An app that maps rental listings and roommate seekers. Selected for the Mayor\'s Innovation Challenge.',
+    image: '/images/pinpoint.mp4',
+    demoLink: 'https://youtu.be/Kijz7jj3HCw',
+    containImage: true,
+    glowColor: 'rgba(210, 140, 60, 0.7)',
+  },
+  {
+    id: 'nervy',
+    title: 'Nervy',
+    year: '2026',
+    shortDescription: 'An AI interview coach that gives real-time feedback on verbal and non-verbal performance, with ASL-to-text captions.',
+    image: '/images/nervy.mp4',
+    demoLink: 'https://www.youtube.com/watch?v=OjtCO2DYJLY',
+    glowColor: 'rgba(80, 100, 220, 0.7)',
   },
   {
     id: 'mesh',
     title: 'Mesh',
-    description: (
-      <>
-        Inspired by Waterloo's SE Webring, Mesh is a 3D social portfolio network supporting <strong>25+ active users</strong> that visualizes Ontario Tech engineering students and alumni as interactive nodes on a dynamic globe, enabling real-time, immersive discovery of portfolios and professional profiles.
-      </>
-    ),
-    technologies: ['React', 'Next.js', 'TypeScript', 'Three.js', 'PostgreSQL'],
-    image: '/images/MeshProjectImage.png',
+    subtitle: '30+ Users',
+    year: '2025',
+    shortDescription: 'A 3D social portfolio network for Ontario Tech engineering and tech students. Built to showcase the talent within our community and connect students with the world beyond campus.',
+    image: '/images/mesh.mp4',
     link: 'https://mesh-otu.com',
-  },
-  {
-    id: 'nervy',
-    title: 'Nervy - AI Interview Coach',
-    subtitle: 'HackHive 2026 - Hackathon Participant',
-    description: (
-      <>
-        Full-stack <strong>AI interview coach</strong> that gives real-time feedback on verbal and non-verbal performance. Users practice via webcam; the app analyzes eye contact, posture, and tone and surfaces actionable insights. Includes <strong>Sign Captions</strong>: real-time ASL-to-text so interview practice is accessible to signers.
-      </>
-    ),
-    technologies: ['PyTorch', 'MediaPipe', 'Gemini', 'Next.js', 'React', 'TypeScript'],
-    image: '/images/nervy.png',
-    demoLink: 'https://www.youtube.com/watch?v=OjtCO2DYJLY',
-  },
-  {
-    id: 'codebuddy',
-    title: 'CodeBuddy',
-    subtitle: 'Alameda Hacks - Hackathon Participant',
-    description: (
-      <>
-        Built a code documentation platform using <strong>Django REST Framework and Flask</strong> that integrates with GitHub to analyze repositories.
-        Developed automated repository processing with <strong>GitHub OAuth authentication</strong> and organization management to help developers understand and document codebases.
-      </>
-    ),
-    technologies: ['Django', 'Flask', 'GitHub API', 'Mistral AI', 'SQLite', 'Jinja'],
-    videoLink: 'https://www.youtube.com/watch?v=6t7L8p_sXHs',
-  },
-  {
-    id: 'ai-resume-analyzer',
-    title: 'AI Resume Analyzer',
-    status: 'In Progress',
-    description: (
-      <>
-        Engineered a production‑grade <strong>AI Resume Analyzer</strong> achieving
-        <strong> 85%+ accuracy</strong> in job alignment, underpinned by a robust data parsing pipeline with a
-        <strong> 90% success rate</strong> for multi‑format resumes.
-      </>
-    ),
-    technologies: ['React', 'Python', 'FastAPI', 'OpenAI API'],
-    codeLink: '#',
-    demoLink: '#',
-  },
-  {
-    id: 'battery-health-prediction',
-    title: 'Battery Health Prediction System',
-    description: (
-      <>
-        Built a machine learning system using <strong>Python, pandas, and scikit-learn</strong> to process and analyze 670+ battery cell measurements.
-        Developed an ETL pipeline with automated feature extraction and achieved <strong>R² = 1.0 accuracy</strong> in predicting battery health.
-      </>
-    ),
-    technologies: ['Python', 'Pandas', 'NumPy', 'Scikit-learn', 'Matplotlib', 'Joblib'],
-    codeLink: '#',
-    demoLink: '#',
+    glowColor: 'rgba(140, 90, 210, 0.7)',
   },
 ]

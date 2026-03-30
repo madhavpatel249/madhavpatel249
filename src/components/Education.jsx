@@ -1,146 +1,140 @@
-import React, { useState, useEffect } from 'react'
-
 const educationStyles = `
   .education {
-    padding: 0 0 60px 0;
-    margin-top: -170px;
+    padding: 8px 0 8px 0;
+    margin-top: 0;
     margin-bottom: 0;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .education.visible {
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
   }
   .section-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
     color: var(--text);
   }
-  .education-content {
+  .education-card {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: default;
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.4s ease;
+  }
+  .education-card:hover {
+    background: #ffffff;
+    box-shadow: 0 2px 16px rgba(50, 130, 210, 0.5);
+  }
+  .education-banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .education-card:hover .education-banner {
+    opacity: 1;
+  }
+  .education-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .education-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+    z-index: 1;
   }
   .university-logo-container {
-    width: 72px;
-    height: 72px;
+    width: 52px;
+    height: 52px;
     flex-shrink: 0;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 4px;
+    border-radius: 10px;
+    padding: 3px;
     background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-  }
-  .dark .university-logo-container {
-    background: #000000;
+    position: relative;
+    z-index: 1;
   }
   .university-logo {
-    width: 120%;
-    height: 120%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
     object-position: center;
   }
   .education-info {
     flex: 1;
+    position: relative;
+    z-index: 1;
   }
-  .education-title {
-    font-size: 16px;
+  .education-name {
+    font-size: 14px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .education-details {
-    font-size: 14px;
+    font-size: 12px;
     color: var(--text-light);
-  }
-  .coursework {
-    margin-top: 24px;
-  }
-  .coursework-title {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--text);
-  }
-  .coursework-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .coursework-item {
-    font-size: 13px;
-    color: var(--text);
-    background: var(--border);
-    padding: 5px 10px;
-    border-radius: 4px;
   }
   @media (max-width: 768px) {
     .education {
-      padding: 24px 0;
+      padding: 8px 0;
+      margin-top: 0;
     }
     .university-logo-container {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
     }
-    .education-title {
-      font-size: 16px;
+    .education-name {
+      font-size: 15px;
     }
     .education-details {
       font-size: 13px;
     }
+    .education-banner {
+      width: 50%;
+    }
   }
 `
 
-const COURSEWORK = [
-    'Data Structures',
-    'Algorithms',
-    'OOP',
-    'Operating Systems',
-    'Computer Architecture',
-    'Software Design & Architecture',
-    'Requirements Engineering',
-    'Software Quality & PM',
-    'Databases',
-    'Web Programming',
-    'Systems Programming',
-    'Computer Networks',
-    'Intro to AI'
-]
-
-function Education({ isVisible = false }) {
+function Education() {
     return (
         <>
             <style>{educationStyles}</style>
-            <section className={`education ${isVisible ? 'visible' : ''}`}>
+            <section id="education" className="education">
                 <h2 className="section-title">Education</h2>
-                <div className="education-content">
+                <div className="education-card">
+                    <div className="education-banner">
+                        <img src="/images/otu_banner.jpg" alt="" />
+                    </div>
                     <div className="university-logo-container">
-                        <img 
-                            src="/images/otechu.png" 
-                            alt="Ontario Tech University" 
+                        <img
+                            src="/images/otechu.png"
+                            alt="Ontario Tech University"
                             className="university-logo"
                         />
                     </div>
                     <div className="education-info">
-                        <div className="education-title">Software Engineering</div>
-                        <div className="education-details">Ontario Tech University • September 2023 - May 2027</div>
-                    </div>
-                </div>
-                <div className="coursework">
-                    <h3 className="coursework-title">Relevant Coursework</h3>
-                    <div className="coursework-list">
-                        {COURSEWORK.map((course, index) => (
-                            <span key={index} className="coursework-item">{course}</span>
-                        ))}
+                        <div className="education-name">Ontario Tech University</div>
+                        <div className="education-details">Software Engineering (2023 - 2027)</div>
                     </div>
                 </div>
             </section>

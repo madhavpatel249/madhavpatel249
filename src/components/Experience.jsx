@@ -1,58 +1,116 @@
-import React from 'react'
 import { experiences } from '../data/experiences'
 
 const experienceStyles = `
   .experience {
-    padding: 0 0 20px 0;
+    padding: 8px 0 4px 0;
     margin-bottom: 0;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    pointer-events: none;
-  }
-  .experience.visible {
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
   }
   .section-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 20px;
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
     color: var(--text);
   }
-  .experience-item {
-    padding: 0;
-    margin: 0;
-  }
-  .experience-content {
+  .experience-card {
+    position: relative;
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 24px;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 3px;
+    cursor: default;
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.4s ease;
+  }
+  .experience-card:last-child {
+    margin-bottom: 0;
+  }
+  .experience-card:hover {
+    background: #ffffff;
+    box-shadow: 0 2px 16px var(--glow-color, rgba(0, 0, 0, 0.1));
+  }
+  .experience-banner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .experience-card:hover .experience-banner {
+    opacity: 1;
+  }
+  .experience-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .experience-banner.banner-small {
+    background: white;
+  }
+  .experience-banner.banner-small::before {
+    width: 100%;
+    left: 0;
+    background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+    z-index: 2;
+  }
+  .experience-banner.banner-small img {
+    width: 75%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    position: relative;
+    z-index: 0;
+  }
+  .experience-banner.banner-small::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15%;
+    height: 100%;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+    z-index: 1;
+  }
+  .experience-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ffffff 0%, transparent 100%);
+    z-index: 1;
   }
   .company-logo-container {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     flex-shrink: 0;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
+    z-index: 1;
   }
   .company-logo {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     object-fit: contain;
     object-position: center;
-  }
-  .company-logo-container svg {
-    width: 100%;
-    height: 100%;
   }
   .company-logo-placeholder {
     width: 100%;
@@ -67,105 +125,71 @@ const experienceStyles = `
   }
   .experience-info {
     flex: 1;
+    position: relative;
+    z-index: 1;
   }
-  .experience-title {
-    font-size: 16px;
+  .experience-company {
+    font-size: 14px;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
-  .experience-details {
-    font-size: 14px;
+  .experience-title {
+    font-size: 12px;
     color: var(--text-light);
-    margin-bottom: 4px;
-  }
-  .experience-program {
-    font-size: 14px;
-    color: var(--text-light);
-    margin-bottom: 4px;
-  }
-  .experience-partnership {
-    font-size: 14px;
-    color: var(--text-light);
-    margin-bottom: 12px;
-  }
-  .experience-responsibilities {
-    margin-top: 12px;
-  }
-  .experience-responsibilities ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .experience-responsibilities li {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.6;
-    margin-bottom: 8px;
-    padding-left: 20px;
-    position: relative;
-  }
-  .experience-responsibilities li:before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: var(--text);
-    font-weight: bold;
   }
   @media (max-width: 768px) {
     .experience {
-      padding: 24px 0;
+      padding: 10px 0;
+    }
+    .experience-card {
+      padding: 12px;
     }
     .company-logo-container {
-      width: 50px;
-      height: 50px;
+      width: 52px;
+      height: 52px;
+    }
+    .experience-company {
+      font-size: 15px;
     }
     .experience-title {
-      font-size: 16px;
-    }
-    .experience-details {
       font-size: 13px;
+    }
+    .experience-banner {
+      width: 50%;
     }
   }
 `
 
-function Experience({ isVisible = false }) {
+function Experience() {
     return (
         <>
             <style>{experienceStyles}</style>
-            <section className={`experience ${isVisible ? 'visible' : ''}`}>
+            <section className="experience">
                 <h2 className="section-title">Experience</h2>
                 {experiences.map((experience) => (
-                    <div key={experience.id} className="experience-item">
-                        <div className="experience-content">
-                            <div className="company-logo-container">
-                                {experience.logo ? (
-                                    <img 
-                                        src={experience.logo} 
-                                        alt={experience.company} 
-                                        className="company-logo"
-                                    />
-                                ) : (
-                                    <div className="company-logo-placeholder">
-                                        V
-                                    </div>
-                                )}
+                    <div key={experience.id} className="experience-card" style={experience.glowColor ? {'--glow-color': experience.glowColor} : {}}>
+                        {experience.banner && (
+                            <div className={`experience-banner ${experience.bannerSize === 'small' ? 'banner-small' : ''}`}>
+                                <img src={experience.banner} alt="" />
                             </div>
-                            <div className="experience-info">
-                                <div className="experience-title">{experience.title}</div>
-                                <div className="experience-details">
-                                    {experience.duration} · {experience.durationDetail} • {experience.location}
+                        )}
+                        <div className="company-logo-container">
+                            {experience.logo ? (
+                                <img
+                                    src={experience.logo}
+                                    alt={experience.company}
+                                    className="company-logo"
+                                />
+                            ) : (
+                                <div className="company-logo-placeholder">
+                                    {experience.company.charAt(0)}
                                 </div>
-                                <div className="experience-program">{experience.program}</div>
-                                <div className="experience-partnership">{experience.partnership}</div>
-                                <div className="experience-responsibilities">
-                                    <ul>
-                                        {experience.responsibilities.map((responsibility, index) => (
-                                            <li key={index}>{responsibility}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
+                            )}
+                        </div>
+                        <div className="experience-info">
+                            <div className="experience-company">{experience.company}</div>
+                            <div className="experience-title">{experience.title}{experience.duration && <span className="experience-duration"> ({experience.duration})</span>}</div>
                         </div>
                     </div>
                 ))}
