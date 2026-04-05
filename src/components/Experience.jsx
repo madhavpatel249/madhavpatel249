@@ -167,8 +167,8 @@ function Experience() {
             <style>{experienceStyles}</style>
             <section className="experience">
                 <h2 className="section-title">Experience</h2>
-                {experiences.map((experience) => (
-                    <div key={experience.id} className="experience-card" style={experience.glowColor ? {'--glow-color': experience.glowColor} : {}}>
+                {experiences.map((experience, i) => (
+                    <div key={experience.id} className="experience-card anim-fade-in-up" style={{...(experience.glowColor ? {'--glow-color': experience.glowColor} : {}), animationDelay: `${0.1 + i * 0.05}s`}}>
                         {experience.banner && (
                             <div className={`experience-banner ${experience.bannerSize === 'small' ? 'banner-small' : ''}`}>
                                 <img src={experience.banner} alt="" />

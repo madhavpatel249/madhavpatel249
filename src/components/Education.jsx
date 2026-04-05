@@ -121,7 +121,7 @@ function Education() {
             <style>{educationStyles}</style>
             <section id="education" className="education">
                 <h2 className="section-title">Education</h2>
-                <div className="education-card">
+                <div className="education-card anim-fade-in-up" style={{animationDelay: '0.1s'}}>
                     <div className="education-banner">
                         <img src="/images/otu_banner.jpg" alt="" />
                     </div>

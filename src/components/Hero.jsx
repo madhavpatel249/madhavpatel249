@@ -32,34 +32,30 @@ const heroStyles = `
   }
   .hero-links {
     display: flex;
-    gap: 8px;
+    gap: 20px;
     flex-shrink: 0;
+    align-items: center;
   }
   .hero-link {
-    width: 30px;
-    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text);
     text-decoration: none;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    transition: box-shadow 0.3s ease;
+    transition: opacity 0.2s ease;
   }
   .hero-link:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    opacity: 0.6;
   }
   .hero-link-icon {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
   }
   .hero-link-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
     filter: brightness(0);
-    transition: filter 0.2s;
     display: block;
   }
   .hero-title {
@@ -92,17 +88,17 @@ function Hero() {
             <style>{heroStyles}</style>
             <section id="home" className="hero">
                 <div className="hero-content">
-                    <div className="hero-top">
+                    <div className="hero-top anim-fade-in-down">
                         <h1 className="hero-name">Madhav Patel</h1>
                         <div className="hero-links">
-                            <a href="mailto:madhavpatel249@gmail.com" className="hero-link" target="_blank" rel="noopener noreferrer" aria-label="Email">
-                                <span className="hero-link-icon">
-                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email" />
-                                </span>
-                            </a>
                             <a href="https://linkedin.com/in/madhavpatel249" className="hero-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <span className="hero-link-icon">
                                     <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" />
+                                </span>
+                            </a>
+                            <a href="mailto:madhavpatel249@gmail.com" className="hero-link" target="_blank" rel="noopener noreferrer" aria-label="Email">
+                                <span className="hero-link-icon">
+                                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Email" />
                                 </span>
                             </a>
                             <a href="https://github.com/madhavpatel249" className="hero-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -112,8 +108,8 @@ function Hero() {
                             </a>
                         </div>
                     </div>
-                    <div className="hero-title">I study Software Engineering at Ontario Tech. I like building things, experimenting with new tech, and solving problems that actually matter.</div>
-                    <div className="hero-title" style={{marginTop: '12px'}}>Currently looking for SWE and data roles — reach me at <a href="mailto:madhavpatel249@gmail.com" className="animated-underline">madhavpatel249@gmail.com</a>.</div>
+                    <div className="hero-title anim-fade-in-down" style={{animationDelay: '0.05s'}}>I study Software Engineering at Ontario Tech. I like building things, experimenting with new tech, and solving problems that actually matter.</div>
+                    <div className="hero-title anim-fade-in-down" style={{marginTop: '12px', animationDelay: '0.1s'}}>Currently looking for SWE and data roles — reach me at <a href="mailto:madhavpatel249@gmail.com" className="animated-underline">madhavpatel249@gmail.com</a>.</div>
                 </div>
             </section>
         </>

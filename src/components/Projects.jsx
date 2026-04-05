@@ -200,11 +200,11 @@ function Projects() {
             <section id="projects" className="projects">
                 <h2 className="section-title">Projects</h2>
                 <div className="projects-grid">
-                    {projects.map((project) => (
+                    {projects.map((project, i) => (
                         <div
                             key={project.id}
-                            className="project-card"
-                            style={project.glowColor ? {'--glow-color': project.glowColor} : {}}
+                            className="project-card anim-fade-in-up"
+                            style={{...(project.glowColor ? {'--glow-color': project.glowColor} : {}), animationDelay: `${0.1 + i * 0.05}s`}}
                         >
                             {project.image && (
                                 <div className={`project-visual ${project.fitImage ? 'fit-image' : ''} ${project.containImage ? 'contain-image' : ''}`}>
