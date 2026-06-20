@@ -108,8 +108,8 @@ function Hero() {
                             </a>
                         </div>
                     </div>
-                    <div className="hero-title anim-fade-in-down" style={{animationDelay: '0.05s'}}>I study Software Engineering at Ontario Tech. I like building things, experimenting with new tech, and solving problems that actually matter.</div>
-                    <div className="hero-title anim-fade-in-down" style={{marginTop: '12px', animationDelay: '0.1s'}}>Currently looking for SWE and data roles — reach me at <a href="mailto:madhavpatel249@gmail.com" className="animated-underline">madhavpatel249@gmail.com</a>.</div>
+                    <div className="hero-title anim-fade-in-down" style={{animationDelay: '0.05s'}}>I enjoy turning ideas into real products and solving problems that matter. I'm especially interested in machine learning, data, and building technology that helps people work, learn, and live better.</div>
+                    <div className="hero-title anim-fade-in-down" style={{marginTop: '12px', animationDelay: '0.1s'}}>Feel free to reach me at <a href="mailto:madhavpatel249@gmail.com" className="animated-underline">madhavpatel249@gmail.com</a>.</div>
                 </div>
             </section>
         </>

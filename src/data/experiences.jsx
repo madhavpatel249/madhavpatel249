@@ -1,9 +1,18 @@
 export const experiences = [
   {
+    id: 'data-engineer-intern-shopify',
+    title: 'Incoming Data Engineer Intern',
+    company: 'Shopify',
+    duration: 'F26',
+    logo: '/images/shop_logo.png',
+    banner: '/images/shop_banner.png',
+    glowColor: 'rgba(150, 191, 72, 0.5)'
+  },
+  {
     id: 'data-analyst-intern',
     title: 'Data Analyst Intern',
     company: 'Deighton Associates Ltd.',
-    duration: 'Incoming S26',
+    duration: 'S26',
     logo: '/images/deighton_logo.png',
     banner: '/images/deighton_banner.webp',
     glowColor: 'rgba(80, 140, 210, 0.5)'
